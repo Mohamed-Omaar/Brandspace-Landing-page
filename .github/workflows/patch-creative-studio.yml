@@ -1,0 +1,564 @@
+name: Patch Creative Studio
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/patch-creative-studio.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-creative-studio:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Patch creative studio section
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          source = path.read_text(encoding='utf-8')
+
+          new_css = r'''  /* ============================= CREATIVE PREVIEW (BrandSpace Minimal) ============================= */
+          .creative-stage{
+            position:relative;
+            min-height:360px;
+            height:auto;
+            max-width:900px;
+            margin:0 auto;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:18px;
+            perspective:1000px;
+            isolation:isolate;
+          }
+          .creative-stage::before{
+            content:'';
+            position:absolute;
+            width:620px;
+            height:320px;
+            border-radius:50%;
+            background:
+              radial-gradient(circle at 35% 50%,rgba(255,221,21,.065),transparent 48%),
+              radial-gradient(circle at 68% 48%,rgba(121,53,254,.07),transparent 50%);
+            filter:blur(8px);
+            pointer-events:none;
+            opacity:.9;
+            z-index:-2;
+          }
+          .creative-stage::after{
+            content:'';
+            position:absolute;
+            inset:34px 5%;
+            background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+            background-size:22px 22px;
+            -webkit-mask-image:linear-gradient(90deg,transparent,black 22%,black 78%,transparent);
+                    mask-image:linear-gradient(90deg,transparent,black 22%,black 78%,transparent);
+            opacity:.18;
+            pointer-events:none;
+            z-index:-3;
+          }
+
+          .product-card{
+            width:190px;
+            height:224px;
+            flex:0 0 190px;
+            border-radius:18px;
+            background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+            border:1px solid var(--border);
+            display:flex;
+            flex-direction:column;
+            align-items:stretch;
+            justify-content:space-between;
+            padding:18px;
+            position:relative;
+            overflow:hidden;
+            z-index:2;
+            box-shadow:0 22px 55px rgba(0,0,0,.42);
+            will-change:transform;
+          }
+          .product-card::before{
+            content:'';
+            position:absolute;
+            inset:-1px;
+            border-radius:inherit;
+            background:radial-gradient(180px circle at var(--brand-mx,30%) var(--brand-my,20%),rgba(255,221,21,.10),transparent 60%);
+            pointer-events:none;
+          }
+          .creative-brand-head{
+            display:flex;
+            align-items:center;
+            gap:11px;
+            position:relative;
+            z-index:2;
+          }
+          .creative-brand-logo-wrap{
+            width:48px;
+            height:48px;
+            border-radius:13px;
+            background:rgba(255,255,255,.045);
+            border:1px solid rgba(255,255,255,.08);
+            display:grid;
+            place-items:center;
+            box-shadow:0 10px 28px rgba(0,0,0,.28),0 0 24px rgba(255,221,21,.08);
+          }
+          .creative-brand-logo{
+            width:38px;
+            height:38px;
+            border-radius:10px;
+            object-fit:contain;
+            filter:drop-shadow(0 0 12px rgba(255,221,21,.16));
+          }
+          .creative-brand-copy{min-width:0;}
+          .creative-brand-kicker{
+            display:block;
+            font-family:var(--font-mono);
+            font-size:8.5px;
+            line-height:1;
+            letter-spacing:.08em;
+            color:var(--text-3);
+            margin-bottom:6px;
+          }
+          .creative-brand-name{
+            display:block;
+            font-family:var(--font-display);
+            font-size:14px;
+            font-weight:700;
+            color:var(--text-1);
+          }
+          .creative-brief{
+            position:relative;
+            z-index:2;
+            padding:11px 12px;
+            border-radius:11px;
+            border:1px solid rgba(255,255,255,.07);
+            background:rgba(255,255,255,.025);
+          }
+          .creative-brief-label{
+            font-family:var(--font-mono);
+            font-size:8px;
+            letter-spacing:.08em;
+            color:var(--text-3);
+            margin-bottom:5px;
+          }
+          .creative-brief-text{
+            font-size:11.5px;
+            font-weight:600;
+            color:var(--text-2);
+            white-space:nowrap;
+          }
+          .creative-brand-foot{
+            position:relative;
+            z-index:2;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+          }
+          .creative-swatches{display:flex;align-items:center;gap:6px;}
+          .creative-swatch{width:9px;height:9px;border-radius:50%;box-shadow:0 0 10px currentColor;}
+          .creative-swatch.yellow{background:var(--accent);color:rgba(255,221,21,.35);}
+          .creative-swatch.violet{background:var(--violet);color:rgba(121,53,254,.35);}
+          .creative-swatch.teal{background:var(--teal);color:rgba(63,214,196,.28);}
+          .creative-ready{
+            font-family:var(--font-mono);
+            font-size:8px;
+            color:var(--text-3);
+            letter-spacing:.04em;
+          }
+
+          .arrow-flow{
+            width:126px;
+            height:126px;
+            flex:0 0 126px;
+            margin:0;
+            position:relative;
+            display:grid;
+            place-items:center;
+            color:inherit;
+            z-index:3;
+          }
+          .creative-stage:hover .arrow-flow{color:inherit;filter:none;}
+          .creative-ai-line{
+            position:absolute;
+            left:-34px;
+            right:-34px;
+            top:50%;
+            height:1px;
+            transform:translateY(-50%);
+            background:linear-gradient(90deg,rgba(255,221,21,.08),rgba(255,221,21,.75) 34%,rgba(121,53,254,.72) 66%,rgba(121,53,254,.08));
+            box-shadow:0 0 10px rgba(255,221,21,.10);
+            z-index:-1;
+            overflow:hidden;
+          }
+          .creative-ai-line::after{
+            content:'';
+            position:absolute;
+            top:-2px;
+            width:22px;
+            height:5px;
+            border-radius:10px;
+            background:linear-gradient(90deg,transparent,#fff,var(--accent),transparent);
+            filter:blur(.2px) drop-shadow(0 0 6px var(--accent));
+            animation:creativeSignal 2.8s ease-in-out infinite;
+          }
+          @keyframes creativeSignal{
+            0%{left:-24px;opacity:0;}
+            15%{opacity:1;}
+            85%{opacity:1;}
+            100%{left:calc(100% + 4px);opacity:0;}
+          }
+          .creative-ai-orb{
+            width:76px;
+            height:76px;
+            border-radius:50%;
+            display:grid;
+            place-items:center;
+            position:relative;
+            background:radial-gradient(circle at 35% 30%,rgba(255,221,21,.11),rgba(16,16,19,.96) 60%);
+            border:1px solid rgba(255,221,21,.42);
+            box-shadow:0 0 0 7px rgba(255,221,21,.025),0 0 34px rgba(255,221,21,.10);
+          }
+          .creative-ai-orb::before,
+          .creative-ai-orb::after{
+            content:'';
+            position:absolute;
+            border-radius:50%;
+            border:1px solid transparent;
+            pointer-events:none;
+          }
+          .creative-ai-orb::before{
+            inset:-13px;
+            border-top-color:rgba(255,221,21,.34);
+            border-right-color:rgba(121,53,254,.26);
+            animation:creativeOrbit 8s linear infinite;
+          }
+          .creative-ai-orb::after{
+            inset:-25px;
+            border-bottom-color:rgba(121,53,254,.18);
+            border-left-color:rgba(255,221,21,.13);
+            animation:creativeOrbit 13s linear infinite reverse;
+          }
+          @keyframes creativeOrbit{to{transform:rotate(360deg);}}
+          .creative-ai-label{
+            font-family:var(--font-display);
+            font-size:16px;
+            font-weight:800;
+            letter-spacing:-.02em;
+            color:var(--text-1);
+          }
+          .creative-ai-status{
+            position:absolute;
+            top:calc(50% + 51px);
+            left:50%;
+            transform:translateX(-50%);
+            white-space:nowrap;
+            font-family:var(--font-mono);
+            font-size:7.5px;
+            letter-spacing:.08em;
+            color:var(--text-3);
+          }
+          .creative-ai-status::before{
+            content:'';
+            display:inline-block;
+            width:5px;
+            height:5px;
+            border-radius:50%;
+            margin-right:6px;
+            background:var(--accent);
+            box-shadow:0 0 8px var(--accent);
+            animation:creativeBlink 1.8s ease-in-out infinite;
+          }
+          @keyframes creativeBlink{50%{opacity:.35;transform:scale(.75);}}
+
+          .creative-out{
+            display:flex;
+            align-items:center;
+            gap:12px;
+            z-index:2;
+            perspective:800px;
+          }
+          .creative-mini{
+            width:118px;
+            height:184px;
+            flex:0 0 118px;
+            border-radius:14px;
+            border:1px solid var(--border);
+            background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+            display:flex;
+            align-items:stretch;
+            padding:9px;
+            box-shadow:0 16px 34px rgba(0,0,0,.38);
+            will-change:transform;
+            overflow:hidden;
+            transition:border-color .3s ease,box-shadow .3s ease,background .3s ease;
+          }
+          .creative-mini:hover{
+            border-color:rgba(255,221,21,.22);
+            background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.016));
+            box-shadow:0 20px 42px rgba(0,0,0,.46),0 0 24px rgba(255,221,21,.035);
+          }
+          .creative-mini-float{
+            animation:creativeFloat 6s ease-in-out infinite;
+            width:100%;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:stretch;
+          }
+          .creative-mini.c1 .creative-mini-float{animation-delay:0s;}
+          .creative-mini.c2 .creative-mini-float{animation-delay:.65s;}
+          .creative-mini.c3 .creative-mini-float{animation-delay:1.3s;}
+          @keyframes creativeFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+          .creative-preview{
+            position:relative;
+            flex:1;
+            min-height:0;
+            overflow:hidden;
+            border-radius:9px;
+            border:1px solid rgba(255,255,255,.055);
+            background:#0d0d10;
+          }
+          .creative-preview::before{
+            content:'';
+            position:absolute;
+            width:90px;
+            height:90px;
+            border-radius:50%;
+            filter:blur(4px);
+            opacity:.72;
+          }
+          .c1 .creative-preview::before{
+            right:-34px;
+            bottom:-28px;
+            background:radial-gradient(circle,var(--accent),rgba(255,221,21,0) 68%);
+          }
+          .c2 .creative-preview::before{
+            left:-32px;
+            bottom:-20px;
+            background:radial-gradient(circle,var(--violet),rgba(121,53,254,0) 68%);
+          }
+          .c3 .creative-preview::before{
+            right:-30px;
+            top:-20px;
+            background:radial-gradient(circle,var(--teal),rgba(63,214,196,0) 68%);
+          }
+          .creative-preview::after{
+            content:'';
+            position:absolute;
+            inset:auto -26px -30px 15px;
+            height:72px;
+            border-radius:60% 20% 0 0;
+            transform:rotate(-10deg);
+            border-top:1px solid rgba(255,255,255,.08);
+            background:linear-gradient(120deg,rgba(255,255,255,.035),transparent 70%);
+          }
+          .creative-preview-logo{
+            position:absolute;
+            top:9px;
+            left:9px;
+            width:19px;
+            height:19px;
+            border-radius:5px;
+            object-fit:contain;
+            z-index:2;
+          }
+          .creative-preview-lines{
+            position:absolute;
+            left:9px;
+            right:9px;
+            bottom:10px;
+            display:flex;
+            flex-direction:column;
+            gap:5px;
+            z-index:2;
+          }
+          .creative-preview-lines i{
+            display:block;
+            height:3px;
+            border-radius:4px;
+            background:rgba(255,255,255,.16);
+          }
+          .creative-preview-lines i:first-child{width:64%;}
+          .creative-preview-lines i:last-child{width:42%;}
+          .creative-mini-meta{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:6px;
+            padding:10px 2px 1px;
+          }
+          .creative-mini span.creative-format{
+            font-size:9px;
+            font-family:var(--font-mono);
+            letter-spacing:.07em;
+            color:rgba(255,255,255,.72);
+          }
+          .creative-format-dot{
+            width:5px;
+            height:5px;
+            border-radius:50%;
+            background:var(--accent);
+            box-shadow:0 0 8px rgba(255,221,21,.45);
+          }
+          .c2 .creative-format-dot{background:var(--violet);box-shadow:0 0 8px rgba(121,53,254,.45);}
+          .c3 .creative-format-dot{background:var(--teal);box-shadow:0 0 8px rgba(63,214,196,.4);}
+
+          .creative-stage-note{
+            max-width:900px;
+            margin:-4px auto 0;
+            text-align:center;
+            font-family:var(--font-mono);
+            font-size:9px;
+            letter-spacing:.08em;
+            color:var(--text-3);
+          }
+          .creative-stage-note strong{color:var(--text-2);font-weight:500;}
+          .creative-stage-note .note-arrow{color:var(--accent);padding:0 7px;}
+
+          @media(max-width:880px){
+            .creative-stage{gap:12px;}
+            .product-card{width:168px;flex-basis:168px;}
+            .arrow-flow{width:96px;flex-basis:96px;}
+            .creative-mini{width:104px;flex-basis:104px;height:168px;}
+          }
+          @media(max-width:700px){
+            .creative-stage{
+              flex-direction:column;
+              min-height:0;
+              gap:18px;
+              padding:8px 0 14px;
+            }
+            .product-card{
+              width:min(100%,300px);
+              height:194px;
+              flex:0 0 auto;
+            }
+            .arrow-flow{width:82px;height:82px;flex:0 0 82px;}
+            .creative-ai-line{display:none;}
+            .creative-ai-orb{width:62px;height:62px;}
+            .creative-ai-status{top:calc(50% + 42px);}
+            .creative-out{gap:8px;max-width:100%;}
+            .creative-mini{width:92px;flex-basis:92px;height:146px;padding:7px;}
+            .creative-preview-logo{width:16px;height:16px;top:7px;left:7px;}
+            .creative-mini-meta{padding-top:8px;}
+            .creative-stage-note{margin-top:4px;}
+          }
+          @media(max-width:350px){
+            .creative-mini{width:84px;flex-basis:84px;}
+          }
+
+'''
+
+          new_html = r'''  <!-- ============================= CREATIVE STUDIO PREVIEW ============================= -->
+          <section aria-label="AI Creative Studio preview">
+            <div class="wrap">
+              <div class="section-head center" style="margin-left:auto;margin-right:auto;">
+                <span class="section-tag">AI CREATIVE STUDIO</span>
+                <h2>One idea. <span class="grad">Every format.</span></h2>
+                <p>Give BrandSpace one creative direction and let AI adapt it into polished content for every channel.</p>
+              </div>
+
+              <div class="creative-stage reveal" id="creativeStage">
+                <div class="product-card" id="prodCard">
+                  <div class="creative-brand-head">
+                    <div class="creative-brand-logo-wrap">
+                      <img class="creative-brand-logo" src="logo.png" alt="BrandSpace logo">
+                    </div>
+                    <div class="creative-brand-copy">
+                      <span class="creative-brand-kicker">YOUR BRAND</span>
+                      <span class="creative-brand-name">BrandSpace</span>
+                    </div>
+                  </div>
+
+                  <div class="creative-brief">
+                    <div class="creative-brief-label">CREATIVE BRIEF</div>
+                    <div class="creative-brief-text">Launch a new campaign</div>
+                  </div>
+
+                  <div class="creative-brand-foot">
+                    <div class="creative-swatches" aria-label="Brand colors">
+                      <span class="creative-swatch yellow"></span>
+                      <span class="creative-swatch violet"></span>
+                      <span class="creative-swatch teal"></span>
+                    </div>
+                    <span class="creative-ready">BRAND READY</span>
+                  </div>
+                </div>
+
+                <div class="arrow-flow" aria-hidden="true" id="creativeArrow">
+                  <div class="creative-ai-line"></div>
+                  <div class="creative-ai-orb"><span class="creative-ai-label">AI</span></div>
+                  <span class="creative-ai-status">CREATING</span>
+                </div>
+
+                <div class="creative-out" aria-label="Generated creative formats">
+                  <div class="creative-mini c1">
+                    <div class="creative-mini-float">
+                      <div class="creative-preview">
+                        <img class="creative-preview-logo" src="logo.png" alt="">
+                        <div class="creative-preview-lines" aria-hidden="true"><i></i><i></i></div>
+                      </div>
+                      <div class="creative-mini-meta"><span class="creative-format">POST</span><i class="creative-format-dot"></i></div>
+                    </div>
+                  </div>
+
+                  <div class="creative-mini c2">
+                    <div class="creative-mini-float">
+                      <div class="creative-preview">
+                        <img class="creative-preview-logo" src="logo.png" alt="">
+                        <div class="creative-preview-lines" aria-hidden="true"><i></i><i></i></div>
+                      </div>
+                      <div class="creative-mini-meta"><span class="creative-format">STORY</span><i class="creative-format-dot"></i></div>
+                    </div>
+                  </div>
+
+                  <div class="creative-mini c3">
+                    <div class="creative-mini-float">
+                      <div class="creative-preview">
+                        <img class="creative-preview-logo" src="logo.png" alt="">
+                        <div class="creative-preview-lines" aria-hidden="true"><i></i><i></i></div>
+                      </div>
+                      <div class="creative-mini-meta"><span class="creative-format">AD</span><i class="creative-format-dot"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="creative-stage-note" aria-hidden="true"><strong>ONE BRIEF</strong><span class="note-arrow">→</span>AI ADAPTS THE FORMAT<span class="note-arrow">→</span><strong>READY TO CREATE</strong></div>
+            </div>
+          </section>
+
+'''
+
+          css_pattern = re.compile(
+              r'\s*/\* ============================= CREATIVE PREVIEW \(Parallax Enhanced\) ============================= \*/.*?(?=\s*/\* ============================= ANALYTICS PREVIEW ============================= \*/)',
+              re.S,
+          )
+          html_pattern = re.compile(
+              r'\s*<!-- ============================= CREATIVE STUDIO PREVIEW ============================= -->.*?(?=\s*<!-- ============================= ANALYTICS PREVIEW ============================= -->)',
+              re.S,
+          )
+
+          source, css_count = css_pattern.subn('\n' + new_css, source, count=1)
+          source, html_count = html_pattern.subn('\n' + new_html, source, count=1)
+
+          if css_count != 1 or html_count != 1:
+              raise SystemExit(f'Patch failed: css={css_count}, html={html_count}')
+
+          path.write_text(source, encoding='utf-8')
+
+      - name: Commit patch
+        run: |
+          git config user.name "BrandSpace Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Redesign creative studio preview"
+          git push
