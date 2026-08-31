@@ -1,0 +1,142 @@
+name: BrandSpace SEO Setup
+
+on:
+  push:
+    paths:
+      - '.github/workflows/seo-setup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Apply SEO and Google Search files
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+
+          old = '''<title>BrandSpace — Your Personal AI Brand Manager</title>
+          <meta name="description" content="BrandSpace is an AI-powered brand and social media platform that helps businesses plan, create, publish, analyze and grow.">
+          <meta name="theme-color" content="#09090B">
+
+          <meta property="og:type" content="website">
+          <meta property="og:title" content="BrandSpace — Your AI Brand Manager">
+          <meta property="og:description" content="BrandSpace is an AI-powered brand and social media platform that helps businesses plan, create, publish, analyze and grow.">
+          <meta property="og:site_name" content="BrandSpace">
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="BrandSpace — Your AI Brand Manager">
+          <meta name="twitter:description" content="BrandSpace is an AI-powered brand and social media platform that helps businesses plan, create, publish, analyze and grow.">
+
+          <link rel="icon" type="image/png" href="logo.png">
+          '''
+
+          new = '''<title>BrandSpace | AI Brand Manager & AI Branding Platform</title>
+          <meta name="description" content="BrandSpace is your AI Brand Manager for brand strategy, AI content creation, social media creatives, publishing, analytics and brand intelligence.">
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+          <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+          <meta name="theme-color" content="#09090B">
+          <link rel="canonical" href="https://www.brandspace.cc/">
+
+          <meta property="og:type" content="website">
+          <meta property="og:url" content="https://www.brandspace.cc/">
+          <meta property="og:title" content="BrandSpace | Your AI Brand Manager">
+          <meta property="og:description" content="Plan brand strategy, create AI-powered content and social media designs, publish, analyze performance and discover brand opportunities in one intelligent workspace.">
+          <meta property="og:site_name" content="BrandSpace">
+          <meta property="og:image" content="https://www.brandspace.cc/logo.png">
+          <meta property="og:image:alt" content="BrandSpace logo">
+
+          <meta name="twitter:card" content="summary_large_image">
+          <meta name="twitter:title" content="BrandSpace | Your AI Brand Manager">
+          <meta name="twitter:description" content="AI brand strategy, content creation, creative studio, social publishing, analytics and brand intelligence in one workspace.">
+          <meta name="twitter:image" content="https://www.brandspace.cc/logo.png">
+
+          <link rel="icon" type="image/png" href="/logo.png">
+          <link rel="shortcut icon" type="image/png" href="/logo.png">
+          <link rel="apple-touch-icon" href="/logo.png">
+
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": "https://www.brandspace.cc/#organization",
+                "name": "BrandSpace",
+                "url": "https://www.brandspace.cc/",
+                "logo": "https://www.brandspace.cc/logo.png",
+                "description": "BrandSpace is an AI-powered brand management and social media platform."
+              },
+              {
+                "@type": "WebSite",
+                "@id": "https://www.brandspace.cc/#website",
+                "url": "https://www.brandspace.cc/",
+                "name": "BrandSpace",
+                "publisher": {"@id": "https://www.brandspace.cc/#organization"}
+              },
+              {
+                "@type": "SoftwareApplication",
+                "@id": "https://www.brandspace.cc/#software",
+                "name": "BrandSpace",
+                "url": "https://www.brandspace.cc/",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "description": "AI Brand Manager for brand strategy, content creation, creative design, publishing, analytics and brand intelligence.",
+                "publisher": {"@id": "https://www.brandspace.cc/#organization"}
+              }
+            ]
+          }
+          </script>
+          '''
+
+          # Normalize indentation because the source head tags begin at column zero.
+          old = '\n'.join(line.strip() for line in old.splitlines()) + '\n'
+          new = '\n'.join(line.strip() if not line.startswith('  ') else line for line in new.splitlines()) + '\n'
+
+          if old not in html:
+              raise SystemExit('Expected SEO block not found; refusing to modify index.html')
+
+          html = html.replace(old, new, 1)
+          index.write_text(html, encoding='utf-8')
+
+          Path('robots.txt').write_text('''User-agent: *
+          Allow: /
+
+          Sitemap: https://www.brandspace.cc/sitemap.xml
+          ''', encoding='utf-8')
+
+          Path('sitemap.xml').write_text('''<?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://www.brandspace.cc/</loc>
+              <lastmod>2026-08-31</lastmod>
+              <changefreq>weekly</changefreq>
+              <priority>1.0</priority>
+            </url>
+          </urlset>
+          ''', encoding='utf-8')
+          PY
+
+          # Remove heredoc indentation from generated text files.
+          sed -i 's/^          //' robots.txt sitemap.xml
+
+      - name: Commit SEO updates
+        shell: bash
+        run: |
+          git config user.name "BrandSpace SEO Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html robots.txt sitemap.xml
+          if git diff --cached --quiet; then
+            echo "No SEO changes to commit."
+          else
+            git commit -m "Improve Google SEO, favicon metadata and indexing files"
+            git push
+          fi
