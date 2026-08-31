@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Enlarge creative studio visual
-        shell: python
+        shell: python {0}
         run: |
           from pathlib import Path
 
