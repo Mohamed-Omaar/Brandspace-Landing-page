@@ -2,9 +2,10 @@ name: Scale Creative Studio
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
-      - '.github/workflows/scale-creative-studio.yml'
+      - .github/workflows/scale-creative-studio.yml
 
 permissions:
   contents: write
@@ -17,46 +18,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Enlarge creative studio visual
-        shell: python {0}
-        run: |
-          from pathlib import Path
-
-          path = Path('index.html')
-          source = path.read_text(encoding='utf-8')
-          marker = '/* CREATIVE STUDIO SIZE BOOST */'
-          if marker in source:
-              raise SystemExit('Size boost already applied')
-
-          css = r'''
-  /* CREATIVE STUDIO SIZE BOOST */
-  @media (min-width: 881px){
-    .creative-stage{
-      max-width:960px;
-      min-height:390px;
-    }
-    .creative-stage.reveal{
-      transform:translateY(30px) scale(1.04);
-    }
-    .creative-stage.reveal.in-view{
-      transform:translateY(0) scale(1.08);
-    }
-    .creative-stage-note{
-      margin-top:12px;
-    }
-  }
-  @media (min-width: 681px) and (max-width: 880px){
-    .creative-stage.reveal.in-view{
-      transform:translateY(0) scale(1.04);
-    }
-  }
-'''
-          source = source.replace('</style>', css + '\n</style>', 1)
-          path.write_text(source, encoding='utf-8')
+        run: python scale_creative.py
 
       - name: Commit size adjustment
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "BrandSpace Automation"
+          git config user.email "actions@users.noreply.github.com"
           git add index.html
+          git diff --cached --quiet && exit 0
           git commit -m "Enlarge creative studio section"
           git push
