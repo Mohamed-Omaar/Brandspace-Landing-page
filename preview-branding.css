@@ -1,0 +1,23 @@
+/* Shared BrandSpace branding for protected preview pages */
+.brand-mark,
+.brand > span:first-child:not(.brand-name),
+.bs-gate-mark,
+.b-mark,
+.brandspace-core > span:first-child,
+.board-top i {
+  background-color: transparent !important;
+  background-image: url('/brandspace-logo.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  overflow: hidden !important;
+  text-indent: -9999px !important;
+}
+
+.brand-mark,
+.brand > span:first-child:not(.brand-name),
+.bs-gate-mark {
+  flex: 0 0 auto;
+}
