@@ -1,3 +1,6 @@
+document.body.style.visibility = "hidden";
+(() => { const s = document.createElement("script"); s.src = "../access-gate.js"; s.onerror = () => { document.body.style.visibility = "visible"; }; document.head.appendChild(s); })();
+
 const rail = document.getElementById("rail");
 const menu = document.getElementById("mobileMenu");
 const backdrop = document.getElementById("mobileBackdrop");
