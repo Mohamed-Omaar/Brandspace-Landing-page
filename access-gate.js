@@ -2,6 +2,15 @@
   const STORAGE_KEY = 'brandspace_preview_unlocked';
   const PASSWORD_HASH = 'bedea0e85fab156c85c945769256abb50579a665ba6f30ca994b839da79642aa';
 
+  const loadProtection = () => {
+    if (window.__brandspaceProtectionLoaderAdded) return;
+    window.__brandspaceProtectionLoaderAdded = true;
+    const script = document.createElement('script');
+    script.src = '/protected-preview.js';
+    script.async = true;
+    document.head.appendChild(script);
+  };
+
   const unlockPage = () => {
     const staleGate = document.getElementById('brandspace-access-gate');
     if (staleGate) staleGate.remove();
@@ -9,6 +18,7 @@
     document.body.style.overflow = '';
     document.body.style.visibility = 'visible';
     document.body.style.pointerEvents = '';
+    loadProtection();
   };
 
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
