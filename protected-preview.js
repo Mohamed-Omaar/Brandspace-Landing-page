@@ -2,13 +2,6 @@
   if (window.__brandspaceProtectedPreview) return;
   window.__brandspaceProtectedPreview = true;
 
-  const SESSION_KEY = 'brandspace_preview_session_id';
-  let sessionId = sessionStorage.getItem(SESSION_KEY);
-  if (!sessionId) {
-    sessionId = Math.random().toString(36).slice(2, 8).toUpperCase();
-    sessionStorage.setItem(SESSION_KEY, sessionId);
-  }
-
   const style = document.createElement('style');
   style.id = 'bs-content-protection-style';
   style.textContent = `
@@ -20,15 +13,6 @@
     html.bs-protected img, html.bs-protected video, html.bs-protected canvas{
       -webkit-user-drag:none!important;
       user-drag:none!important;
-    }
-    #bs-confidential-watermark{
-      position:fixed;inset:0;z-index:2147482000;pointer-events:none;overflow:hidden;
-      opacity:.085;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:150px;
-      align-items:center;justify-items:center;mix-blend-mode:multiply;
-    }
-    #bs-confidential-watermark span{
-      white-space:nowrap;transform:rotate(-24deg);font:800 11px/1 Inter,Cairo,"Segoe UI",Arial,sans-serif;
-      letter-spacing:.08em;color:#111114;text-transform:uppercase;
     }
     #bs-capture-shield{
       position:fixed;inset:0;z-index:2147482500;display:none;place-items:center;
@@ -42,19 +26,9 @@
         display:block!important;padding:48px;font:700 18px/1.5 Arial,sans-serif;color:#111;
       }
     }
-    @media(max-width:640px){
-      #bs-confidential-watermark{grid-template-columns:repeat(2,1fr);grid-auto-rows:125px}
-      #bs-confidential-watermark span{font-size:9px}
-    }
   `;
   document.head.appendChild(style);
   document.documentElement.classList.add('bs-protected');
-
-  const watermark = document.createElement('div');
-  watermark.id = 'bs-confidential-watermark';
-  const label = `CONFIDENTIAL • BRANDSPACE • SESSION ${sessionId}`;
-  watermark.innerHTML = Array.from({length: 24}, () => `<span>${label}</span>`).join('');
-  document.body.appendChild(watermark);
 
   const shield = document.createElement('div');
   shield.id = 'bs-capture-shield';
@@ -66,9 +40,14 @@
     event.stopPropagation();
   };
 
-  ['copy','cut','contextmenu','dragstart','selectstart'].forEach(type => {
-    document.addEventListener(type, stop, true);
-  });
+  document.addEventListener('copy', stop, true);
+  document.addEventListener('cut', stop, true);
+  document.addEventListener('contextmenu', stop, true);
+  document.addEventListener('dragstart', stop, true);
+  document.addEventListener('selectstart', (event) => {
+    if (event.target?.matches?.('input, textarea')) return;
+    stop(event);
+  }, true);
 
   document.addEventListener('keydown', (event) => {
     const key = String(event.key || '').toLowerCase();
