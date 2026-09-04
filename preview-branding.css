@@ -4,7 +4,9 @@
 .bs-gate-mark,
 .b-mark,
 .brandspace-core > span:first-child,
-.board-top i {
+.board-top i,
+.brand-large,
+.final-brand > span:first-child {
   background-color: transparent !important;
   background-image: url('/brandspace-logo.svg') !important;
   background-repeat: no-repeat !important;
@@ -18,6 +20,8 @@
 
 .brand-mark,
 .brand > span:first-child:not(.brand-name),
-.bs-gate-mark {
+.bs-gate-mark,
+.brand-large,
+.final-brand > span:first-child {
   flex: 0 0 auto;
 }
