@@ -18,6 +18,19 @@ html[lang="ar"] .view,
 html[lang="ar"] .side-drawer,
 html[lang="ar"] .command-dialog { direction: rtl; }
 
+/* Keep the BrandSpace lockup exactly in English, but anchor the whole lockup to the RTL sidebar's right edge. */
+html[lang="ar"] .sidebar-top { direction: rtl; }
+html[lang="ar"] .brand {
+  direction: ltr;
+  text-align: left;
+}
+html[lang="ar"] .brand-name {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: Inter, Arial, sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
 html[lang="ar"] .nav-item,
 html[lang="ar"] .workspace-copy,
 html[lang="ar"] .profile-copy,
