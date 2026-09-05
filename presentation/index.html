@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="theme-color" content="#f5f3ff" />
+  <title>BrandSpace — Partner Subscription Presentation</title>
+  <meta name="description" content="A partner-focused presentation for BrandSpace subscriptions, platform value, benefits and partnership model." />
+  <link rel="icon" type="image/svg+xml" href="/brandspace-logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#111114;--muted:#6f6f78;--subtle:#9b9ba4;--line:rgba(17,17,20,.08);
+      --bg:#f5f4f7;--surface:#fff;--soft:#f1eff7;--purple:#7935fe;--purple-2:#5d24ce;--yellow:#ffdd15;--pink:#ff9fbd;
+      --green:#18a058;--orange:#d58a00;--red:#c43d4f;--shadow:0 24px 80px rgba(34,25,63,.12);--soft-shadow:0 14px 42px rgba(20,16,35,.07);
+      --radius:30px;--max:1200px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth;background:var(--bg)}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at 10% -5%,rgba(121,53,254,.18),transparent 34%),radial-gradient(circle at 92% 6%,rgba(255,221,21,.30),transparent 28%),linear-gradient(180deg,#faf9ff,#f4f3f6 42%,#f7f7f8);font-size:15px;line-height:1.55;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(17,17,20,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,20,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.38),transparent 70%);z-index:-2}
+    a{color:inherit;text-decoration:none} button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}.top{position:sticky;top:14px;z-index:20;width:min(1260px,calc(100% - 28px));margin:14px auto 0;padding:10px;border-radius:24px;background:rgba(255,255,255,.78);backdrop-filter:blur(22px);box-shadow:0 10px 34px rgba(30,22,54,.08);display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em;padding:4px 8px}.brand img{width:36px;height:36px;border-radius:12px}.nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:center}.nav a{font-size:11px;font-weight:700;color:#4b4b54;padding:9px 10px;border-radius:999px}.nav a:hover{background:var(--soft);color:var(--ink)}
+    .nav .pill{background:var(--ink);color:white;padding-inline:14px}.progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--yellow));width:0;z-index:99}
+    .hero{padding:86px 0 38px}.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:28px;align-items:stretch}.hero-card{position:relative;overflow:hidden;border-radius:42px;background:linear-gradient(135deg,#fff,#f6f2ff 62%,#fff8bd);box-shadow:var(--shadow);padding:54px;min-height:560px;display:flex;flex-direction:column;justify-content:space-between}.hero-card:after{content:"";position:absolute;right:-130px;top:-130px;width:350px;height:350px;border-radius:50%;background:rgba(121,53,254,.18);filter:blur(20px)}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(121,53,254,.09);color:#5d24ce;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;width:max-content}.kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 5px rgba(255,221,21,.22)}
+    h1,h2,h3,p{margin-top:0}.hero h1{font-size:clamp(48px,7vw,86px);line-height:.88;letter-spacing:-.075em;margin:22px 0 18px;max-width:780px}.hero p.lead{font-size:19px;color:#4e4d56;max-width:650px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:15px;border:0;background:var(--ink);color:white;font-size:12px;font-weight:800}.btn.soft{background:white;color:var(--ink);box-shadow:0 8px 24px rgba(20,16,35,.08)}.btn.yellow{background:var(--yellow);color:var(--ink)}
+    .hero-panel{border-radius:42px;background:rgba(255,255,255,.76);backdrop-filter:blur(20px);box-shadow:var(--shadow);padding:26px;position:relative;overflow:hidden}.product-window{border-radius:28px;background:#111114;color:#fff;padding:16px;min-height:506px;position:relative;overflow:hidden}.window-top{display:flex;gap:6px;margin-bottom:20px}.window-top i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.28)}.brain-visual{height:420px;border-radius:24px;background:radial-gradient(circle at 50% 44%,rgba(121,53,254,.46),transparent 28%),radial-gradient(circle at 70% 26%,rgba(255,221,21,.38),transparent 24%),linear-gradient(160deg,#1a1428,#0f0f13);position:relative;display:grid;place-items:center}.brain-core{width:154px;height:154px;border-radius:50%;background:linear-gradient(145deg,#fff,#efe8ff);color:var(--ink);display:grid;place-items:center;text-align:center;font-weight:800;letter-spacing:-.03em;box-shadow:0 24px 70px rgba(121,53,254,.36)}.node{position:absolute;padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.13);backdrop-filter:blur(12px);font-size:11px;font-weight:700}.n1{left:24px;top:74px}.n2{right:28px;top:82px}.n3{left:48px;bottom:80px}.n4{right:40px;bottom:90px}.n5{top:28px;left:50%;transform:translateX(-50%)}.n6{bottom:30px;left:50%;transform:translateX(-50%)}
+    section{padding:46px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:20px}.section-head h2{font-size:clamp(34px,4.4vw,58px);line-height:.95;letter-spacing:-.06em;margin:10px 0 0;max-width:760px}.section-head p{color:var(--muted);max-width:430px;margin:0}.grid{display:grid;gap:16px}.cols-3{grid-template-columns:repeat(3,1fr)}.cols-4{grid-template-columns:repeat(4,1fr)}.cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{border-radius:var(--radius);background:rgba(255,255,255,.82);box-shadow:var(--soft-shadow);padding:28px;position:relative;overflow:hidden}.card.dark{background:#111114;color:white}.card.purple{background:linear-gradient(145deg,#7935fe,#5420c7);color:white}.card.yellow{background:linear-gradient(145deg,#ffeb54,#ffdd15);color:#111114}.card h3{font-size:22px;line-height:1.05;letter-spacing:-.035em;margin:12px 0 10px}.card p,.card li{color:var(--muted);font-size:14px}.card.dark p,.card.dark li,.card.purple p,.card.purple li{color:rgba(255,255,255,.72)}.icon{width:46px;height:46px;border-radius:16px;background:var(--soft);display:grid;place-items:center;font-weight:900;color:var(--purple)}.dark .icon,.purple .icon{background:rgba(255,255,255,.14);color:white}.yellow .icon{background:rgba(17,17,20,.08);color:#111}
+    .stat{font-size:48px;font-weight:800;letter-spacing:-.06em;line-height:.9;margin:18px 0 8px}.tiny{font-size:11px;color:var(--subtle);font-weight:700;text-transform:uppercase;letter-spacing:.08em}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;align-items:stretch}.step{padding:22px;border-radius:24px;background:white;box-shadow:var(--soft-shadow);min-height:150px}.step span{display:flex;width:34px;height:34px;border-radius:12px;background:#111;color:white;align-items:center;justify-content:center;font-size:12px;font-weight:800;margin-bottom:16px}.step h3{font-size:18px;margin-bottom:8px}.step p{font-size:12px;color:var(--muted);margin:0}
+    .comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px}.list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.list li{display:flex;gap:10px;align-items:flex-start}.list li:before{content:"✓";flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:rgba(121,53,254,.12);color:var(--purple);display:grid;place-items:center;font-weight:900;font-size:11px;margin-top:1px}.bad li:before{content:"×";background:rgba(196,61,79,.1);color:var(--red)}
+    .chart-card{min-height:340px}.bar-chart{display:flex;align-items:end;gap:11px;height:190px;margin-top:30px}.bar{flex:1;border-radius:16px 16px 7px 7px;background:linear-gradient(180deg,var(--purple),#d6c5ff);position:relative;min-height:42px}.bar:nth-child(2){height:58%}.bar:nth-child(3){height:77%}.bar:nth-child(4){height:92%;background:linear-gradient(180deg,var(--yellow),#fff1a1)}.bar:nth-child(1){height:44%}.bar:after{content:attr(data-label);position:absolute;bottom:-26px;left:0;right:0;text-align:center;color:var(--muted);font-size:10px;font-weight:700}.donut{width:190px;height:190px;border-radius:50%;background:conic-gradient(var(--purple) 0 48%,var(--yellow) 48% 72%,#ff9fbd 72% 88%,#e8e5ef 88% 100%);margin:20px auto;position:relative}.donut:after{content:"Subscription\A value";white-space:pre;position:absolute;inset:36px;border-radius:50%;background:white;display:grid;place-items:center;text-align:center;font-weight:800;font-size:18px;letter-spacing:-.04em}.rank{display:grid;gap:8px}.rank div{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:11px;border-radius:14px;background:var(--soft);font-size:12px;font-weight:700}.timeline{position:relative;display:grid;gap:12px}.timeline:before{content:"";position:absolute;left:22px;top:8px;bottom:8px;width:2px;background:var(--line)}.time-item{display:grid;grid-template-columns:46px 1fr;gap:12px;position:relative}.time-dot{width:46px;height:46px;border-radius:16px;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:800;font-size:12px}.time-card{padding:20px;border-radius:22px;background:white;box-shadow:var(--soft-shadow)}.time-card h3{margin:0 0 6px;font-size:18px}.time-card p{margin:0;color:var(--muted);font-size:13px}
+    .offer{border-radius:42px;padding:38px;background:linear-gradient(135deg,#111114,#23173f 64%,#7935fe);color:white;box-shadow:var(--shadow);overflow:hidden;position:relative}.offer:after{content:"";position:absolute;right:-80px;top:-80px;width:250px;height:250px;border-radius:50%;background:var(--yellow);opacity:.18;filter:blur(16px)}.offer-grid{display:grid;grid-template-columns:1fr .8fr;gap:24px;position:relative;z-index:1}.offer h2{font-size:clamp(36px,5vw,68px);line-height:.92;letter-spacing:-.065em;margin:12px 0}.offer p{color:rgba(255,255,255,.72)}.pricing{display:grid;gap:10px}.price-row{display:flex;justify-content:space-between;gap:12px;align-items:center;border-radius:18px;padding:14px 16px;background:rgba(255,255,255,.1);font-size:13px}.price-row b:last-child{color:var(--yellow)}
+    .footer{padding:36px 0 52px}.footer-card{border-radius:34px;background:#111114;color:white;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-card p{color:rgba(255,255,255,.62);margin:4px 0 0;font-size:13px}.reveal{opacity:0;transform:translateY(18px);filter:blur(10px);transition:opacity .65s ease,transform .65s ease,filter .65s ease}.reveal.show{opacity:1;transform:none;filter:none}
+    @media(max-width:980px){.hero-grid,.offer-grid,.comparison{grid-template-columns:1fr}.cols-4{grid-template-columns:repeat(2,1fr)}.cols-3,.cols-2{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.top{align-items:flex-start}.nav{display:none}.hero-card{min-height:auto;padding:36px}.section-head{display:block}.section-head p{margin-top:12px}.product-window{min-height:430px}.brain-visual{height:350px}}
+    @media(max-width:620px){.wrap{width:min(100% - 28px,var(--max))}.top{border-radius:18px}.hero{padding-top:48px}.hero-card,.hero-panel,.offer{border-radius:28px;padding:24px}.hero h1{font-size:48px}.flow,.cols-4{grid-template-columns:1fr}.metric-row{grid-template-columns:1fr}.brain-core{width:126px;height:126px}.node{font-size:9px;padding:8px 9px}.n1{left:12px}.n2{right:12px}.n3{left:16px}.n4{right:16px}.footer-card{display:block}.btn{width:100%}}
+    @media print{.top,.progress,.btn{display:none!important}body{background:white}.reveal{opacity:1;transform:none;filter:none}.card,.hero-card,.hero-panel,.offer,.footer-card{box-shadow:none;border:1px solid #ddd}section{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="top">
+    <a class="brand" href="/presentation/"><img src="/brandspace-logo.svg" alt="BrandSpace logo"><span>BrandSpace</span></a>
+    <nav class="nav" aria-label="Presentation navigation">
+      <a href="#opportunity">Opportunity</a><a href="#solution">Solution</a><a href="#partner">Partner value</a><a href="#subscription">Subscription</a><a href="#go-to-market">Go-to-market</a><a class="pill" href="#next">Next step</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-card reveal">
+          <div>
+            <span class="kicker">Partner subscription proposal</span>
+            <h1>Your brand presence, one space.</h1>
+            <p class="lead">BrandSpace helps businesses manage their online brand presence with an AI-powered workspace built around brand memory, content planning, approvals, publishing and insight.</p>
+            <div class="hero-actions"><a class="btn" href="#subscription">View subscription offer</a><a class="btn soft" href="/demo/">Open product demo</a></div>
+          </div>
+          <div class="grid cols-3" style="margin-top:34px">
+            <div><div class="tiny">Positioning</div><b>AI Brand Management OS</b></div>
+            <div><div class="tiny">Target</div><b>Businesses & partners</b></div>
+            <div><div class="tiny">Core edge</div><b>Brand Brain</b></div>
+          </div>
+        </div>
+        <div class="hero-panel reveal">
+          <div class="product-window">
+            <div class="window-top"><i></i><i></i><i></i></div>
+            <div class="brain-visual">
+              <div class="node n5">Strategy</div><div class="node n1">Identity</div><div class="node n2">Audience</div><div class="node n3">Voice</div><div class="node n4">Offers</div><div class="node n6">Learning</div>
+              <div class="brain-core">Brand<br>Brain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opportunity">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="kicker">01 · Opportunity</span><h2>Most businesses are online, but their brand presence is fragmented.</h2></div><p>Teams use separate tools for content, design, approvals, scheduling, reporting and AI. The result is slower execution, inconsistent messaging and weak visibility.</p></div>
+        <div class="grid cols-4">
+          <article class="card reveal"><div class="icon">01</div><h3>Scattered tools</h3><p>Content ideas, captions, assets, approvals and reports live in different places.</p></article>
+          <article class="card reveal"><div class="icon">02</div><h3>Generic AI output</h3><p>AI tools need the brand explained again and again, which creates inconsistent work.</p></article>
+          <article class="card reveal"><div class="icon">03</div><h3>Slow approvals</h3><p>Marketing work gets delayed because feedback, context and versions are not connected.</p></article>
+          <article class="card reveal"><div class="icon">04</div><h3>No clear learning loop</h3><p>Performance insights rarely flow back into future strategy and content decisions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="kicker">02 · The solution</span><h2>BrandSpace becomes the operating space for brand presence.</h2></div><p>One calm workspace where a business can structure its brand knowledge, create content, collaborate, publish and learn.</p></div>
+        <div class="flow reveal">
+          <div class="step"><span>1</span><h3>Brand Brain</h3><p>Central brand memory: audience, voice, offers, rules, FAQs and documents.</p></div>
+          <div class="step"><span>2</span><h3>AI Strategy</h3><p>Plans and content direction grounded in approved brand knowledge.</p></div>
+          <div class="step"><span>3</span><h3>Content Studio</h3><p>Captions, posts, creatives and variations created in one workflow.</p></div>
+          <div class="step"><span>4</span><h3>Calendar & approvals</h3><p>Reviewable content schedule with team roles and approval control.</p></div>
+          <div class="step"><span>5</span><h3>Analytics & learning</h3><p>Insights feed the next planning cycle without changing brand truth silently.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap comparison">
+        <article class="card reveal">
+          <span class="kicker">Without BrandSpace</span><h3>Manual, fragmented and inconsistent.</h3>
+          <ul class="list bad"><li>AI outputs are generic and off-brand.</li><li>Design, captions and strategy are disconnected.</li><li>Approvals depend on chats and manual follow-up.</li><li>Reports do not improve the next campaign.</li></ul>
+        </article>
+        <article class="card purple reveal">
+          <span class="kicker" style="background:rgba(255,255,255,.14);color:white">With BrandSpace</span><h3>Structured, brand-aware and scalable.</h3>
+          <ul class="list"><li>Every output starts from approved brand context.</li><li>Content, assets, calendar and approvals work together.</li><li>Partners can manage more clients with less operational friction.</li><li>Insights become recommendations for the next cycle.</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="partner">
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="kicker">03 · Partner value</span><h2>A subscription offer that creates recurring value for partners and their clients.</h2></div><p>Partners can package BrandSpace as part of brand management, social media operations, creative retainers or digital transformation services.</p></div>
+        <div class="grid cols-3">
+          <article class="card reveal"><div class="icon">↗</div><h3>Increase retention</h3><p>Clients stay connected through planning, approvals, reporting and monthly strategy cycles.</p><div class="stat">12×</div><div class="tiny">Monthly touchpoints</div></article>
+          <article class="card reveal"><div class="icon">◎</div><h3>Scale delivery</h3><p>Standardized workflows make it easier to serve more brands without losing quality.</p><div class="stat">1 OS</div><div class="tiny">For content operations</div></article>
+          <article class="card reveal"><div class="icon">✦</div><h3>Differentiate the offer</h3><p>Brand Brain gives the platform a unique value beyond normal scheduling tools.</p><div class="stat">AI+</div><div class="tiny">Brand memory layer</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap grid cols-2">
+        <article class="card chart-card reveal"><span class="kicker">Value growth</span><h3>From basic posting to a full brand presence system.</h3><div class="bar-chart"><div class="bar" data-label="Posting"></div><div class="bar" data-label="Planning"></div><div class="bar" data-label="Approvals"></div><div class="bar" data-label="Intelligence"></div></div></article>
+        <article class="card chart-card reveal"><span class="kicker">Subscription value mix</span><h3>Multiple benefits in one recurring package.</h3><div class="donut"></div><div class="rank"><div><span>01</span><b>Operations</b><b>48%</b></div><div><span>02</span><b>AI creation</b><b>24%</b></div><div><span>03</span><b>Brand memory</b><b>16%</b></div><div><span>04</span><b>Insights</b><b>12%</b></div></div></article>
+      </div>
+    </section>
+
+    <section id="subscription">
+      <div class="wrap offer reveal">
+        <div class="offer-grid">
+          <div><span class="kicker" style="background:rgba(255,255,255,.12);color:white">04 · Subscription offer</span><h2>A platform subscription partners can sell, bundle or manage.</h2><p>The commercial model can be adapted for direct business subscriptions, agency-managed accounts or partner bundles. Final prices and quotas can remain configurable from the platform control center.</p><div class="hero-actions"><a class="btn yellow" href="#next">Discuss partnership</a><a class="btn soft" href="/brand-guideline/">Open brand guideline</a></div></div>
+          <div class="pricing">
+            <div class="price-row"><b>Starter workspace</b><b>Brand setup + core planning</b></div>
+            <div class="price-row"><b>Growth workspace</b><b>Content + approvals + AI</b></div>
+            <div class="price-row"><b>Scale workspace</b><b>Multi-brand / team operations</b></div>
+            <div class="price-row"><b>Partner model</b><b>Managed seats + margin</b></div>
+            <div class="price-row"><b>AI usage</b><b>Credit-based control</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="kicker">05 · What subscribers get</span><h2>Clear benefits for every business using the platform.</h2></div><p>The subscription is not just software access. It is a structured operating system for consistent online brand management.</p></div>
+        <div class="grid cols-3">
+          <article class="card reveal"><div class="icon">B</div><h3>Brand Brain setup</h3><p>Store the brand’s voice, audience, offers, proof points, objections, rules, glossary and documents.</p></article>
+          <article class="card reveal"><div class="icon">□</div><h3>Content calendar</h3><p>Plan launches, campaigns, always-on content and approval status in a visual calendar.</p></article>
+          <article class="card reveal"><div class="icon">✎</div><h3>AI composer</h3><p>Create captions, variations and ideas while keeping every output grounded in brand context.</p></article>
+          <article class="card reveal"><div class="icon">✦</div><h3>Design Studio direction</h3><p>Generate or prepare brand-aligned creative directions and templates for social channels.</p></article>
+          <article class="card reveal"><div class="icon">✓</div><h3>Approvals & roles</h3><p>Control who creates, reviews, approves and manages each workspace.</p></article>
+          <article class="card reveal"><div class="icon">↗</div><h3>Reports & insights</h3><p>Understand what worked, what to repeat and what to change in the next content cycle.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="go-to-market">
+      <div class="wrap grid cols-2">
+        <article class="card reveal"><span class="kicker">06 · Partner use cases</span><h3>Where BrandSpace fits naturally.</h3><ul class="list"><li>Social media management retainers.</li><li>Brand management packages for SMEs.</li><li>Agency client portals and approval workflows.</li><li>Franchise or multi-branch brand consistency.</li><li>Founder-led businesses that need structured marketing execution.</li></ul></article>
+        <article class="card reveal"><span class="kicker">Commercial positioning</span><h3>How to explain it to clients.</h3><ul class="list"><li>Not just a scheduler — a brand presence workspace.</li><li>Not generic AI — AI grounded in the client’s Brand Brain.</li><li>Not a dashboard — a monthly operating rhythm for the brand.</li><li>Not replacement for partners — a platform to scale partner delivery.</li></ul></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head reveal"><div><span class="kicker">07 · Implementation path</span><h2>A simple partner rollout model.</h2></div><p>The partner offer can start as a guided subscription and evolve into a managed multi-client workspace.</p></div>
+        <div class="timeline">
+          <div class="time-item reveal"><div class="time-dot">01</div><div class="time-card"><h3>Partner onboarding</h3><p>Define the partner’s target clients, subscription package and delivery model.</p></div></div>
+          <div class="time-item reveal"><div class="time-dot">02</div><div class="time-card"><h3>Client workspace setup</h3><p>Create each client workspace, brand profile, Brand Brain and team permissions.</p></div></div>
+          <div class="time-item reveal"><div class="time-dot">03</div><div class="time-card"><h3>First content cycle</h3><p>Plan the first calendar, generate drafts, review with the client and schedule approved work.</p></div></div>
+          <div class="time-item reveal"><div class="time-dot">04</div><div class="time-card"><h3>Monthly optimization</h3><p>Use insights, recommendations and partner feedback to improve the next content strategy.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="next">
+      <div class="wrap grid cols-2">
+        <article class="card dark reveal"><span class="kicker" style="background:rgba(255,255,255,.12);color:white">Next step</span><h3>Recommended partnership conversation.</h3><p>Use this page as the first meeting presentation. The next discussion should confirm the partner model, target customer segment, subscription tiers, onboarding process and revenue share.</p><ul class="list"><li>Who will own client onboarding?</li><li>How many workspaces start in the pilot?</li><li>What services are bundled with the subscription?</li><li>What margins and AI usage limits are acceptable?</li></ul></article>
+        <article class="card yellow reveal"><span class="kicker" style="background:rgba(17,17,20,.08);color:#111">Pilot proposal</span><h3>Start with a controlled pilot.</h3><p style="color:#3d3600">Launch a small pilot with selected partners and clients, collect feedback, then refine pricing, onboarding and packaged services before wider rollout.</p><div class="stat">30–60</div><div class="tiny" style="color:#5c5200">Days pilot window</div><div class="hero-actions"><a class="btn" href="/demo/">Open demo</a><a class="btn soft" href="/presentation/#subscription">Subscription offer</a></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-card reveal">
+      <div><b>BrandSpace</b><p>Your brand presence, one space.</p></div>
+      <div class="hero-actions"><a class="btn yellow" href="/demo/">View demo</a><a class="btn soft" href="/brand-guideline/">Brand guideline</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const progress=document.getElementById('progress');
+    const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'};
+    addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();
+    const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
+</body>
+</html>
