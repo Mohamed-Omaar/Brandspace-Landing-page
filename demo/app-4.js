@@ -12,3 +12,156 @@ function closeMobile(){sidebar.classList.remove("mobile-open");$("#mobileBackdro
 $("#collapseSidebar").addEventListener("click",e=>{state.collapsed=!state.collapsed;appShell.classList.toggle("sidebar-collapsed",state.collapsed);e.currentTarget.setAttribute("aria-expanded",String(!state.collapsed))});$("#experienceButton").addEventListener("click",e=>{const m=$("#experienceMenu");m.classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",String(m.classList.contains("open")))});$$('[data-mode]').forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));$("#mobileMenu").addEventListener("click",()=>{sidebar.classList.add("mobile-open");$("#mobileBackdrop").classList.add("open");$("#mobileMenu").setAttribute("aria-expanded","true")});$("#mobileBackdrop").addEventListener("click",closeMobile);$("#drawerBackdrop").addEventListener("click",closeDrawer);$("#copilotDock").addEventListener("click",openCopilot);$("#globalCreate").addEventListener("click",()=>state.mode==="customer"?showView("composer"):notify());$("#languageButton").addEventListener("click",()=>{state.lang=state.lang==="en"?"ar":"en";document.documentElement.dir=state.lang==="ar"?"rtl":"ltr";document.documentElement.lang=state.lang;$("#languageButton").textContent=state.lang==="ar"?"EN":"AR";notify()});
 function commandItems(){return Object.entries(experiences).flatMap(([mode,e])=>e.groups.flatMap(g=>g[1].map(x=>({mode,id:x[0],label:x[2]}))))}function openSearch(){$("#commandBackdrop").classList.add("open");$("#commandInput").value="";renderResults("");setTimeout(()=>$("#commandInput").focus(),20)}function closeSearch(){$("#commandBackdrop").classList.remove("open")}function renderResults(q){const items=commandItems().filter(x=>x.label.toLowerCase().includes(q.toLowerCase())).slice(0,8);$("#commandResults").innerHTML=items.map(x=>`<button class="command-result" data-command="${x.mode}/${x.id}"><b>${x.label}</b><small>${experiences[x.mode].name}</small></button>`).join("");$$('[data-command]').forEach(b=>b.addEventListener("click",()=>{const[m,id]=b.dataset.command.split("/");state.mode=m;$("#experienceName").textContent=experiences[m].name;$("#experienceIcon").textContent=experiences[m].icon;$("#profileRole").textContent=experiences[m].role;showView(id);closeSearch()}))}
 $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEventListener("input",e=>renderResults(e.target.value));$("#commandBackdrop").addEventListener("click",e=>{if(e.target===$("#commandBackdrop"))closeSearch()});document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openSearch()}if(e.key==="Escape"){closeDrawer();closeSearch();closeMobile()}});const initial=location.hash.replace("#","").split("/");if(experiences[initial[0]]){state.mode=initial[0];state.view=meta[initial[1]]?initial[1]:experiences[state.mode].start;$("#experienceName").textContent=experiences[state.mode].name;$("#experienceIcon").textContent=experiences[state.mode].icon;$("#profileRole").textContent=experiences[state.mode].role}render();
+
+/* Integrated Brand Brain preview — stays inside the original product shell. */
+(()=>{
+  const BRAIN_URL="../brand-brain-preview/?embedded=1";
+  meta["brand-brain"]=["Brand intelligence","Brand Brain"];
+
+  function ensureBrainStyles(){
+    if(document.getElementById("brandBrainIntegratedStyle"))return;
+    const style=document.createElement("style");
+    style.id="brandBrainIntegratedStyle";
+    style.textContent=`
+      .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:28px;background:#f3f3f5;box-shadow:0 18px 55px rgba(30,22,54,.06)}
+      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function resizeBrainFrame(frame,bdoc){
+    const resize=()=>{
+      const h=Math.max(900,bdoc.documentElement.scrollHeight,bdoc.body?.scrollHeight||0);
+      frame.style.height=`${h}px`;
+    };
+    resize();
+    if("ResizeObserver" in window){
+      const ro=new ResizeObserver(resize);
+      if(bdoc.body)ro.observe(bdoc.body);
+    }
+    setTimeout(resize,180);
+    setTimeout(resize,600);
+  }
+
+  function prepareEmbeddedBrain(frame){
+    const apply=()=>{
+      let bdoc;
+      try{bdoc=frame.contentDocument}catch(e){return}
+      if(!bdoc||!bdoc.head)return;
+      if(!bdoc.getElementById("brandBrainEmbeddedMode")){
+        const style=bdoc.createElement("style");
+        style.id="brandBrainEmbeddedMode";
+        style.textContent=`
+          html,body{background:transparent!important;overflow:visible!important}
+          .app{display:block!important;grid-template-columns:1fr!important;padding:0!important;min-height:0!important}
+          .side,.topbar{display:none!important}
+          .main{display:block!important;width:100%!important;min-width:0!important}
+          .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important}
+          .copilot{position:absolute!important;right:22px!important;bottom:22px!important}
+          @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:24px!important}.copilot{display:none!important}}
+        `;
+        bdoc.head.appendChild(style);
+      }
+      resizeBrainFrame(frame,bdoc);
+    };
+    frame.addEventListener("load",apply,{once:true});
+    setTimeout(apply,80);
+  }
+
+  function activateBrainButton(btn){
+    document.querySelectorAll(".nav-item").forEach(item=>{
+      item.classList.remove("active");
+      item.removeAttribute("aria-current");
+    });
+    btn.classList.add("active");
+    btn.setAttribute("aria-current","page");
+  }
+
+  function openBrandBrain(btn){
+    ensureBrainStyles();
+    state.view="brand-brain";
+    location.hash="customer/brand-brain";
+    activateBrainButton(btn);
+
+    const eyebrow=document.getElementById("pageEyebrow");
+    const title=document.getElementById("pageTitle");
+    if(eyebrow)eyebrow.textContent="Brand intelligence";
+    if(title)title.textContent="Brand Brain";
+
+    const create=document.getElementById("globalCreate");
+    if(create)create.innerHTML='+ <span>Add knowledge</span>';
+
+    const view=document.getElementById("view");
+    if(!view)return;
+    view.innerHTML="";
+    const frame=document.createElement("iframe");
+    frame.id="brandBrainRouteFrame";
+    frame.className="brand-brain-route";
+    frame.src=BRAIN_URL;
+    frame.title="Brand Brain";
+    frame.setAttribute("loading","eager");
+    view.appendChild(frame);
+    prepareEmbeddedBrain(frame);
+    closeMobile();
+  }
+
+  function addBrandBrainNav(){
+    if(state.mode!=="customer")return;
+    if(document.getElementById("brandBrainIntegratedNav"))return;
+    const brandKit=document.querySelector('[data-view-target="brand"]');
+    if(!brandKit)return;
+
+    const btn=brandKit.cloneNode(true);
+    btn.id="brandBrainIntegratedNav";
+    btn.removeAttribute("data-view-target");
+    btn.removeAttribute("aria-current");
+    btn.setAttribute("data-label","Brand Brain");
+    btn.classList.remove("active");
+    const icon=btn.querySelector(".nav-icon");
+    if(icon)icon.textContent="✦";
+    const spans=btn.querySelectorAll("span");
+    if(spans[1])spans[1].textContent="Brand Brain";
+    const badge=btn.querySelector(".nav-badge");
+    if(badge)badge.textContent="preview";
+    btn.addEventListener("click",e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      openBrandBrain(btn);
+    });
+    brandKit.parentNode.insertBefore(btn,brandKit);
+  }
+
+  const nav=document.getElementById("navList");
+  if(nav){
+    new MutationObserver(()=>setTimeout(addBrandBrainNav,0)).observe(nav,{childList:true,subtree:true});
+  }
+
+  const create=document.getElementById("globalCreate");
+  if(create){
+    create.addEventListener("click",e=>{
+      if(state.view!=="brand-brain")return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      notify();
+    },true);
+  }
+
+  document.addEventListener("click",e=>{
+    const target=e.target.closest?.("[data-view-target],[data-mode]");
+    if(!target)return;
+    if(state.view==="brand-brain"&&target.dataset.viewTarget){
+      const create=document.getElementById("globalCreate");
+      if(create)create.innerHTML='+ <span>Create</span>';
+    }
+    setTimeout(addBrandBrainNav,0);
+  },true);
+
+  addBrandBrainNav();
+  if(location.hash==="#customer/brand-brain"){
+    setTimeout(()=>{
+      addBrandBrainNav();
+      const btn=document.getElementById("brandBrainIntegratedNav");
+      if(btn)openBrandBrain(btn);
+    },60);
+  }
+})();
