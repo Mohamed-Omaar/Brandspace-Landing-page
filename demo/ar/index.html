@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f4f4">
+  <meta name="robots" content="noindex,nofollow">
+  <title>BrandSpace — المعاينة الكاملة للمنتج</title>
+  <meta name="description" content="معاينة عربية كاملة وتفاعلية لمنصة BrandSpace وتطبيق العميل ومركز التحكم والموقع العام.">
+  <link rel="icon" type="image/svg+xml" href="/brandspace-logo.svg">
+  <link rel="stylesheet" href="../styles-1.css">
+  <link rel="stylesheet" href="../styles-2.css">
+  <link rel="stylesheet" href="../styles-3.css">
+  <link rel="stylesheet" href="../mobile-fix.css">
+  <link rel="stylesheet" href="./ar.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="orb orb-purple"></span><span class="orb orb-yellow"></span><span class="orb orb-mix"></span>
+  </div>
+
+  <button class="mobile-menu" id="mobileMenu" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+  <button class="mobile-backdrop" id="mobileBackdrop" aria-label="إغلاق القائمة"></button>
+
+  <div class="app-shell" id="appShell">
+    <aside class="sidebar" id="sidebar" aria-label="التنقل الرئيسي">
+      <div class="sidebar-top">
+        <button class="brand" data-go="customer/overview" aria-label="الصفحة الرئيسية لـ BrandSpace"><span class="brand-mark">B</span><span class="brand-name">BrandSpace</span></button>
+        <button class="icon-button collapse-button" id="collapseSidebar" aria-label="طي القائمة الجانبية" aria-expanded="true">←</button>
+      </div>
+
+      <div class="experience-switcher" id="experienceSwitcher">
+        <button class="experience-current" id="experienceButton" aria-haspopup="listbox" aria-expanded="false">
+          <span class="experience-icon" id="experienceIcon">◈</span>
+          <span class="workspace-copy"><strong id="experienceName">تطبيق العميل</strong><small>تجربة معاينة</small></span>
+          <span class="chevron">⌄</span>
+        </button>
+        <div class="experience-menu" id="experienceMenu" role="listbox">
+          <button data-mode="customer"><span>◈</span><b>تطبيق العميل</b><small>مساحة عمل للشركة</small></button>
+          <button data-mode="admin"><span>⌘</span><b>مركز التحكم</b><small>مالك المنصة</small></button>
+          <button data-mode="public"><span>◎</span><b>الموقع العام</b><small>صفحات التسويق</small></button>
+        </div>
+      </div>
+
+      <nav class="nav-scroll" id="navList"></nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-special="map" data-label="خريطة المنتج"><span class="nav-icon">⌗</span><span>خريطة المنتج</span></button>
+        <button class="profile-button">
+          <span class="profile-avatar">MM</span><span class="profile-copy"><strong>Mohamed</strong><small id="profileRole">مالك مساحة العمل</small></span><span class="more">•••</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="title-block"><p class="eyebrow" id="pageEyebrow">مساحة العمل</p><h1 id="pageTitle">صباح الخير، محمد</h1></div>
+        <div class="topbar-actions">
+          <button class="search-button" id="openSearch"><span>⌕</span><span>ابحث عن أي شيء</span><kbd>⌘ K</kbd></button>
+          <button class="icon-button" aria-label="الإشعارات">♢<span class="notification-dot"></span></button>
+          <button class="ghost-button language-button" id="languageButton">EN</button>
+          <button class="primary-button compact" id="globalCreate">+ <span>إنشاء</span></button>
+        </div>
+      </header>
+      <section class="view" id="view" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <button class="copilot-dock" id="copilotDock" aria-label="فتح المساعد الذكي">
+    <span class="copilot-dock-icon">✦</span><span class="copilot-dock-copy"><b>المساعد الذكي</b><small>اسأل عن هذه الصفحة</small></span>
+  </button>
+
+  <button class="drawer-backdrop" id="drawerBackdrop" aria-label="إغلاق اللوحة"></button>
+  <aside class="side-drawer" id="sideDrawer" aria-hidden="true" aria-label="لوحة التفاصيل"><div id="drawerContent"></div></aside>
+
+  <div class="command-backdrop" id="commandBackdrop">
+    <section class="command-dialog" role="dialog" aria-modal="true" aria-label="البحث في BrandSpace">
+      <label><span>⌕</span><input id="commandInput" placeholder="ابحث في الصفحات والمزايا…"></label>
+      <div id="commandResults"></div><small>اكتب للبحث · Enter للفتح · Esc للإغلاق</small>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="../app-1.js"></script>
+  <script src="../app-2.js"></script>
+  <script src="../app-3.js"></script>
+  <script src="../app-4.js"></script>
+  <script src="./ar-localize.js"></script>
+</body>
+</html>
