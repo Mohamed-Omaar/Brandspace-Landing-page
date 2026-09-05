@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+html[lang="ar"],
+html[lang="ar"] body,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+html[lang="ar"] kbd {
+  font-family: "Cairo", "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+}
+
+html[lang="ar"] body { direction: rtl; }
+html[lang="ar"] .app-shell { direction: rtl; }
+html[lang="ar"] .sidebar,
+html[lang="ar"] .main-panel,
+html[lang="ar"] .view,
+html[lang="ar"] .side-drawer,
+html[lang="ar"] .command-dialog { direction: rtl; }
+
+html[lang="ar"] .nav-item,
+html[lang="ar"] .workspace-copy,
+html[lang="ar"] .profile-copy,
+html[lang="ar"] .item-copy,
+html[lang="ar"] .hero-copy,
+html[lang="ar"] .section-head,
+html[lang="ar"] .view-toolbar,
+html[lang="ar"] .field,
+html[lang="ar"] .auth-card,
+html[lang="ar"] .feature-card,
+html[lang="ar"] .price-card,
+html[lang="ar"] .public-preview { text-align: right; }
+
+html[lang="ar"] .collapse-button { transform: scaleX(-1); }
+html[lang="ar"] .link-button { direction: rtl; }
+html[lang="ar"] .table-row { direction: rtl; }
+html[lang="ar"] .record-main { direction: rtl; }
+html[lang="ar"] .drawer-meta { direction: rtl; }
+html[lang="ar"] .copilot-input { direction: rtl; }
+html[lang="ar"] .search-field,
+html[lang="ar"] input,
+html[lang="ar"] textarea { text-align: right; }
+
+html[lang="ar"] .social-preview,
+html[lang="ar"] .post-art,
+html[lang="ar"] .social-media,
+html[lang="ar"] .canvas,
+html[lang="ar"] .mini-chart,
+html[lang="ar"] .chart-bars,
+html[lang="ar"] .donut,
+html[lang="ar"] .browser-card { direction: ltr; }
+
+html[lang="ar"] .brand-mark,
+html[lang="ar"] .nav-icon,
+html[lang="ar"] .feature-icon,
+html[lang="ar"] .profile-avatar,
+html[lang="ar"] .avatar { font-family: Inter, Arial, sans-serif !important; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] strong,
+html[lang="ar"] b { letter-spacing: 0 !important; }
+
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .section-kicker,
+html[lang="ar"] .nav-group-title { letter-spacing: 0 !important; }
+
+@media (max-width: 760px) {
+  html[lang="ar"] .mobile-menu { right: 14px; left: auto; }
+}
