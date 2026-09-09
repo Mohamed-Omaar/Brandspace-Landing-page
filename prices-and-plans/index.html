@@ -35,7 +35,7 @@
           <a href="#guardrails"><span class="dot">09</span>Commercial guardrails</a><a href="#decisions"><span class="dot">10</span>Pending decisions</a>
         </div>
       </nav>
-      <div class="side-note"><small>Status</small><b>Provisional commercial model</b><p>Approved starting values. Final AI action and top-up prices follow Phase 4 cost validation.</p></div>
+      <div class="side-note"><small>Pricing clarity</small><b>Everything in one guide</b><p>Plan values are shown now. AI action and top-up prices will be published after cost validation.</p></div>
     </aside>
 
     <div class="mobile-nav"><img src="/brandspace-logo.svg" alt="BrandSpace" /><label class="sr-only" for="chapterSelect">Jump to chapter</label><select id="chapterSelect"><option value="#cover">Prices & plans</option><option value="#overview">Overview</option><option value="#plans">Plans & pricing</option><option value="#limits">Capacity limits</option><option value="#features">Feature access</option><option value="#roles">User permissions</option><option value="#credits">Credit lifecycle</option><option value="#services">AI service costs</option><option value="#topups">Top-ups</option><option value="#decisions">Pending decisions</option></select></div>
@@ -44,7 +44,7 @@
       <section class="section cover" id="cover">
         <div class="cover-lockup"><img src="/brandspace-logo.svg" alt="" />BrandSpace</div>
         <div class="cover-copy"><span class="cover-kicker">Commercial architecture · September 2026</span><h1>Prices, plans<br />& <span>access.</span></h1><p>A single presentation for subscription pricing, capacity, feature access, user permissions, AI credits, top-ups and the commercial decisions still awaiting cost validation.</p></div>
-        <div class="cover-foot"><span>Internal commercial presentation · Confidential</span><span>Approved values + explicitly marked pending decisions</span></div>
+        <div class="cover-foot"><span>Customer plans & access guide</span><span>Confirmed values + clearly marked launch-pending prices</span></div>
       </section>
 
       <section class="section" id="overview">
@@ -93,27 +93,29 @@
       </section>
 
       <section class="section" id="roles">
-        <div class="section-head reveal"><div><span class="eyebrow">05 / User permissions</span><h2>Access follows responsibility.</h2></div><p>Subscription features answer “what the workspace owns.” Roles answer “who inside it may do what.” Platform staff remain in a completely separate access realm.</p></div>
-        <div class="provisional reveal"><strong>Access-model note:</strong> these are the approved role boundaries. Permissions attached to later-phase features activate only with those features; current security and tenant-isolation rules remain authoritative.</div>
-        <div class="role-tabs reveal" role="tablist" style="margin-top:14px"><button class="active" role="tab" aria-selected="true" data-role-tab="customer">Customer workspace roles</button><button role="tab" aria-selected="false" data-role-tab="platform">Platform operations roles</button></div>
-        <div class="role-panel active" data-role-panel="customer"><div class="roles reveal">
+        <div class="section-head reveal"><div><span class="eyebrow">05 / Team access</span><h2>More room for the team.<br />Clear responsibility for everyone.</h2></div><p>Plans define team size and collaboration tools. Workspace roles define what each invited member can view, create, approve or manage.</p></div>
+        <div class="table-wrap reveal"><table><thead><tr><th>Team access</th><th>Starter</th><th>Growth</th><th>Scale</th><th>Enterprise</th></tr></thead><tbody>
+          <tr><td>Included team seats</td><td><strong>2</strong></td><td><strong>8</strong></td><td><strong>20</strong></td><td><strong>Custom</strong></td></tr>
+          <tr><td>Workspace Owner & Admin</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>Manager, creator & specialist roles</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>Team approval workflow</td><td class="no">—</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>Approver actions</td><td class="no">—</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>Advanced governance & automations</td><td class="no">—</td><td class="no">—</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+          <tr><td>SSO / SAML access controls</td><td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">Included</td></tr>
+        </tbody></table></div>
+        <div class="provisional reveal"><strong>How access works:</strong> a role never unlocks a feature outside the customer’s plan. For example, Approver actions become available from Growth, while Scale adds advanced governance and automation controls.</div>
+        <div class="reveal" style="margin:28px 0 14px"><span class="mini-label">Workspace role guide</span></div>
+        <div class="roles reveal">
           <article class="role"><div class="role-head"><span>OW</span><div><h3>Workspace Owner</h3><p>Final commercial and ownership authority.</p></div></div><div class="can">Full workspace, brand, content, publishing, analytics, team, billing and credit access.</div><small class="boundary">Only role that transfers ownership, deletes the workspace or changes plan/payment.</small></article>
           <article class="role"><div class="role-head"><span>AD</span><div><h3>Workspace Admin</h3><p>Runs the workspace day to day.</p></div></div><div class="can">Manages settings, team, brands, content, publishing, social connections and analytics.</div><small class="boundary">Cannot transfer/delete ownership or change plan/payment; billing is view-only.</small></article>
           <article class="role"><div class="role-head"><span>MM</span><div><h3>Marketing Manager</h3><p>Owns strategy and execution.</p></div></div><div class="can">Brand Brain, AI strategy, campaigns, content, approvals, publishing, analytics and automations.</div><small class="boundary">Team administration is limited to non-admin roles.</small></article>
           <article class="role"><div class="role-head"><span>CC</span><div><h3>Content Creator</h3><p>Builds and schedules content.</p></div></div><div class="can">Creates drafts and AI content, manages assets, comments, submits and schedules own approved work.</div><small class="boundary">Cannot publish externally, approve work, manage team or billing.</small></article>
           <article class="role"><div class="role-head"><span>CW</span><div><h3>Copywriter</h3><p>Owns written content.</p></div></div><div class="can">Text drafts, AI writing, own assets, comments, approval submission and own-content analytics.</div><small class="boundary">No publishing, visual generation, approvals or administration.</small></article>
           <article class="role"><div class="role-head"><span>DS</span><div><h3>Designer</h3><p>Owns visual expression.</p></div></div><div class="can">Visual Brand Brain suggestions, creative drafts, AI creative, assets and submission.</div><small class="boundary">No publishing, approval, strategy or administration.</small></article>
-          <article class="role"><div class="role-head"><span>AP</span><div><h3>Approver</h3><p>Controls quality before publish.</p></div></div><div class="can">Reviews, approves or rejects, comments, views analytics and uses Copilot to explain.</div><small class="boundary">Cannot create, schedule, publish or manage the workspace.</small></article>
+          <article class="role"><div class="role-head"><span>AP</span><div><h3>Approver</h3><p>Controls quality before publish.</p></div></div><div class="can">Reviews, approves or rejects, comments, views analytics and uses Copilot to explain.</div><small class="boundary">Available when the plan includes team approvals. Cannot create, schedule, publish or manage the workspace.</small></article>
           <article class="role"><div class="role-head"><span>AN</span><div><h3>Analyst</h3><p>Turns results into decisions.</p></div></div><div class="can">Views and exports analytics, comments, reads aggregate credits and brand-scoped activity.</div><small class="boundary">No content mutation, publishing, approval or billing changes.</small></article>
           <article class="role"><div class="role-head"><span>VR</span><div><h3>Viewer (read-only)</h3><p>Narrow visibility for assigned brands.</p></div></div><div class="can">Reads assigned brand information, comments and limited analytics where enabled.</div><small class="boundary">No Copilot or mutations. Existing RBAC role—not sold as an agency feature.</small></article>
-        </div></div>
-        <div class="role-panel" data-role-panel="platform"><div class="roles reveal">
-          <article class="role"><div class="role-head"><span>PO</span><div><h3>Platform Owner</h3><p>Highest platform authority.</p></div></div><div class="can">All platform operations, financial activation, users, roles, configuration and security.</div><small class="boundary">High-impact actions require audit and step-up controls.</small></article>
-          <article class="role"><div class="role-head"><span>PA</span><div><h3>Platform Admin</h3><p>Runs platform operations.</p></div></div><div class="can">Customers, workspaces, plans, features, integrations, AI routing, support and configuration drafts.</div><small class="boundary">Cannot manage platform users; financial configuration activation remains owner-controlled.</small></article>
-          <article class="role"><div class="role-head"><span>SA</span><div><h3>Support Agent</h3><p>Helps customers safely.</p></div></div><div class="can">Support-relevant directory access and time-boxed, audited Support Mode.</div><small class="boundary">No secrets, configuration, plan changes or unrestricted customer writes.</small></article>
-          <article class="role"><div class="role-head"><span>BM</span><div><h3>Billing Manager</h3><p>Handles financial operations.</p></div></div><div class="can">Assigns plans, manages trials and credits, billing events, refunds and financial exports.</div><small class="boundary">No AI routing, general configuration, platform users or customer content.</small></article>
-          <article class="role"><div class="role-head"><span>OV</span><div><h3>Operations Viewer</h3><p>Read-only operational visibility.</p></div></div><div class="can">Reads platform dashboards, configuration, audit history and health metadata.</div><small class="boundary">Cannot edit, activate, export, enter support mode or access secret values.</small></article>
-        </div></div>
+        </div>
       </section>
 
       <section class="section" id="credits">
@@ -134,18 +136,18 @@
           <article class="service"><span class="service-icon">BB</span><div><b>Brand Brain retrieval</b><small>Context retrieval bundled into the AI task</small></div><span class="cost-status included">Not separate</span></article>
           <article class="service"><span class="service-icon">MD</span><div><b>Safety moderation</b><small>Mandatory platform protection</small></div><span class="cost-status included">Not separate</span></article>
         </div>
-        <div class="provisional reveal"><strong>Customer rule:</strong> the confirmed credit cost must be shown before a chargeable action runs. <strong>Internal rule:</strong> provider price, tokens and gross margin stay visible to Platform Admin and hidden from customers.</div>
+        <div class="provisional reveal"><strong>Customer rule:</strong> the confirmed credit cost is shown before a chargeable action runs. BrandSpace absorbs provider and token complexity so customers work with one clear credit price.</div>
       </section>
 
       <section class="section" id="topups">
         <div class="section-head reveal"><div><span class="eyebrow">08 / Top-ups & usage policy</span><h2>No overage.<br />No surprise invoice.</h2></div><p>When the included balance reaches zero, AI actions stop clearly. The rest of the workspace continues to function while the customer upgrades or buys a prepaid pack.</p></div>
         <div class="g3 reveal"><article class="card dark"><div class="icon">0</div><h3>Hard stop</h3><p>No postpaid overage on any MVP plan. An AI action cannot create a charge the customer did not authorize.</p></article><article class="card lav"><div class="icon">+</div><h3>Prepaid packs</h3><p>Purchased before use and valid for 12 months. Pack sizes and USD/SAR prices remain pending Phase 4 economics.</p></article><article class="card yellow"><div class="icon">↻</div><h3>Controlled rollover</h3><p>Monthly plan credits roll over only up to one monthly allowance. Nearest-expiry credits are consumed first.</p></article></div>
-        <div class="decision reveal" style="margin-top:12px"><article class="decision-card"><span class="mini-label">Top-up price status</span><h3>Not approved yet—and deliberately not invented.</h3><p>Pack sizes and prices must be derived from the real blended provider cost, payment fees, target margin and expected model mix measured by Phase 4.</p></article><div class="decision-list"><article class="decision-row"><span>Input 01</span><div><b>Provider cost per task</b><small>Measured across the chosen text, image and strategy models.</small></div></article><article class="decision-row"><span>Input 02</span><div><b>Required gross margin</b><small>Owner-approved margin floor for plans and packs.</small></div></article><article class="decision-row"><span>Input 03</span><div><b>Customer simplicity</b><small>Three clear packs at most; no provider or token vocabulary.</small></div></article></div></div>
+        <div class="decision reveal" style="margin-top:12px"><article class="decision-card"><span class="mini-label">Top-up price status</span><h3>Final packs will be published before launch.</h3><p>Pack sizes and prices remain intentionally unlisted until the real AI cost is validated. Customers will always see the exact credits, price and expiry before purchase.</p></article><div class="decision-list"><article class="decision-row"><span>Promise 01</span><div><b>Clear pack value</b><small>Every option shows the exact credit amount and full price.</small></div></article><article class="decision-row"><span>Promise 02</span><div><b>No automatic overage</b><small>A pack is prepaid and never creates a surprise usage bill.</small></div></article><article class="decision-row"><span>Promise 03</span><div><b>Simple choices</b><small>A small number of clear packs with no provider or token vocabulary.</small></div></article></div></div>
       </section>
 
       <section class="section" id="guardrails">
         <div class="section-head reveal"><div><span class="eyebrow">09 / Commercial guardrails</span><h2>Pricing can change.<br />Trust cannot.</h2></div><p>The commercial model is configuration, not hard-coded product behavior. Existing customers retain the terms and resources they were promised.</p></div>
-        <div class="guardrails reveal"><article class="guard"><span>01</span><h3>Prices are versioned</h3><p>Changing a catalogue price does not silently reprice an existing subscription.</p></article><article class="guard"><span>02</span><h3>Downgrades do not delete</h3><p>Resources above a new limit become read-only and return after re-upgrade.</p></article><article class="guard"><span>03</span><h3>Human approval</h3><p>Financial configuration is drafted and activated through separated duties.</p></article><article class="guard"><span>04</span><h3>Every movement is auditable</h3><p>Grants, reservations, charges, releases, expiry and adjustments remain traceable.</p></article></div>
+        <div class="guardrails reveal"><article class="guard"><span>01</span><h3>Prices are versioned</h3><p>Changing a catalogue price does not silently reprice an existing subscription.</p></article><article class="guard"><span>02</span><h3>Downgrades do not delete</h3><p>Resources above a new limit become read-only and return after re-upgrade.</p></article><article class="guard"><span>03</span><h3>Customer approval</h3><p>Paid changes are clear before confirmation and never happen silently.</p></article><article class="guard"><span>04</span><h3>Every movement is traceable</h3><p>Grants, reservations, charges, releases, expiry and adjustments remain visible in the customer’s usage history.</p></article></div>
       </section>
 
       <section class="section" id="decisions">
@@ -173,10 +175,6 @@
       const annual=button.dataset.billing==='annual';
       document.querySelectorAll('.price strong[data-monthly]').forEach(price=>price.textContent=annual?price.dataset.annual:price.dataset.monthly);
       document.querySelectorAll('[data-price-label]').forEach(label=>label.textContent=annual?'/ year':'/ month');
-    }));
-    document.querySelectorAll('[data-role-tab]').forEach(button=>button.addEventListener('click',()=>{
-      document.querySelectorAll('[data-role-tab]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-selected',String(active))});
-      document.querySelectorAll('[data-role-panel]').forEach(panel=>panel.classList.toggle('active',panel.dataset.rolePanel===button.dataset.roleTab));
     }));
     document.querySelector('#chapterSelect').addEventListener('change',event=>document.querySelector(event.target.value)?.scrollIntoView({behavior:'smooth'}));
   </script>
