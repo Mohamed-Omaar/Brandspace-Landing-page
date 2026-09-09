@@ -29,10 +29,15 @@
     document.querySelectorAll('.nav-item[data-view-target] .nav-icon').forEach((node) => {
       const route = node.closest('.nav-item')?.dataset.viewTarget || 'default';
       const key = aliases[route] || route;
+      if (node.dataset.bsIcon === key) return;
+      node.dataset.bsIcon = key;
       node.innerHTML = svg(paths[key] || paths.default);
     });
     const brain = document.querySelector('#brandBrainIntegratedNav .nav-icon');
-    if (brain) brain.innerHTML = svg(paths.copilot);
+    if (brain && brain.dataset.bsIcon !== 'copilot') {
+      brain.dataset.bsIcon = 'copilot';
+      brain.innerHTML = svg(paths.copilot);
+    }
   }
 
   applyIcons();
