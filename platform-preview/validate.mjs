@@ -29,4 +29,9 @@ if (!app.includes('./brand-brain-preview/?embedded=1')) {
   throw new Error("Brand Brain is not self-contained inside this preview");
 }
 
+const icons = await readFile(new URL("icons.js", import.meta.url), "utf8");
+if (!icons.includes("node.dataset.bsIcon === key")) {
+  throw new Error("Icon observer must guard against self-triggered redraw loops");
+}
+
 console.log(`Validated ${required.length} preview assets.`);
