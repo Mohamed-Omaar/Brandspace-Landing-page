@@ -1,0 +1,136 @@
+/* BrandSpace platform visual preview.
+   Colour lives in the ambient ground and content artwork; product chrome stays calm. */
+:root {
+  --ink: #111114;
+  --muted: #6f6f77;
+  --subtle: #9a9aa2;
+  --soft: #f4f4f5;
+  --surface: rgba(255, 255, 255, 0.86);
+  --purple: #7935fe;
+  --yellow: #ffdd15;
+  --shadow: 0 28px 90px rgba(27, 19, 48, 0.11);
+  --soft-shadow: 0 14px 42px rgba(23, 18, 37, 0.065);
+}
+
+html { background: #efeff0; }
+
+.ambient {
+  background:
+    radial-gradient(circle at 7% 5%, rgba(121, 53, 254, 0.14), transparent 32%),
+    radial-gradient(circle at 91% 92%, rgba(255, 221, 21, 0.18), transparent 31%),
+    #efeff0;
+}
+
+.orb { opacity: 0.27; filter: blur(120px); }
+.orb-mix { opacity: 0.12; }
+
+.app-shell {
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow);
+}
+
+.sidebar { background: rgba(246, 246, 247, 0.76); }
+.main-panel { background: rgba(255, 255, 255, 0.32); }
+
+.brand-mark,
+.nav-item.active,
+.copilot-dock,
+.dark-button,
+.primary-button {
+  background: var(--ink);
+  color: #fff;
+}
+
+.primary-button:hover,
+.dark-button:hover,
+.copilot-dock:hover { background: #000; }
+
+.experience-icon,
+.profile-avatar,
+.copilot-dock-icon {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 20, 0.06);
+}
+
+.experience-current,
+.profile-button,
+.surface-card,
+.metric,
+.post-card,
+.feature-card,
+.command-dialog,
+.side-drawer {
+  border: 0;
+  background: var(--surface);
+  box-shadow: var(--soft-shadow);
+}
+
+.nav-item { border-radius: 11px; transition: background .18s ease, color .18s ease, transform .18s ease; }
+.nav-item:hover { background: rgba(255, 255, 255, 0.92); }
+.nav-item:active { transform: scale(0.985); }
+.nav-item.active { box-shadow: none; }
+.nav-badge { background: #e8e8ea; color: #66666e; }
+.nav-item.active .nav-badge { background: rgba(255,255,255,.15); color: #fff; }
+
+.hero-card {
+  background:
+    radial-gradient(circle at 82% 24%, rgba(121, 53, 254, 0.16), transparent 31%),
+    radial-gradient(circle at 58% 98%, rgba(255, 221, 21, 0.19), transparent 35%),
+    #fff;
+  box-shadow: var(--soft-shadow);
+}
+
+.hero-copy h2 { color: var(--ink); }
+.label-pill { background: rgba(255,255,255,.82); color: var(--ink); }
+.quick-card { background: #f2f2f3; transition: transform .18s ease, background .18s ease; }
+.quick-card:hover { background: #eaeaec; transform: translateY(-2px); }
+
+.search-button,
+.soft-button,
+.language-button,
+.icon-button,
+.filter-row button,
+.segmented,
+.tabs,
+.select-like,
+.search-field,
+input,
+textarea,
+select {
+  border: 0;
+  background: #f1f1f2;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(121, 53, 254, 0.32);
+}
+
+.nav-icon svg { width: 17px; height: 17px; display: block; }
+.sidebar-collapsed .nav-icon { width: 20px; }
+
+.post-card,
+.social-preview,
+.drawer-art { overflow: hidden; }
+.post-art,
+.drawer-art,
+.phone-art { filter: saturate(.88) contrast(.98); }
+
+@media (max-width: 900px) {
+  .app-shell { background: #fff; }
+}
+
+@media (max-width: 640px) {
+  .sidebar { background: #f7f7f8 !important; }
+  .main-panel { background: #fff; }
+  .hero-copy h2 { font-size: clamp(38px, 12vw, 48px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-item,
+  .quick-card { transition: none; }
+}

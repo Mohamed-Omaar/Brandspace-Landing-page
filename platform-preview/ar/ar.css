@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+html[lang="ar"],
+html[lang="ar"] body,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea,
+html[lang="ar"] select,
+html[lang="ar"] kbd {
+  font-family: "Cairo", "Noto Sans Arabic", Tahoma, Arial, sans-serif !important;
+}
+
+html[lang="ar"] body { direction: rtl; }
+html[lang="ar"] .app-shell { direction: rtl; }
+html[lang="ar"] .sidebar,
+html[lang="ar"] .main-panel,
+html[lang="ar"] .view,
+html[lang="ar"] .side-drawer,
+html[lang="ar"] .command-dialog { direction: rtl; }
+
+/* Keep the BrandSpace lockup exactly in English, but anchor the whole lockup to the RTL sidebar's right edge. */
+html[lang="ar"] .sidebar-top { direction: rtl; }
+html[lang="ar"] .brand {
+  direction: ltr;
+  text-align: left;
+}
+html[lang="ar"] .brand-name {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: Inter, Arial, sans-serif !important;
+  letter-spacing: -0.02em !important;
+}
+
+html[lang="ar"] .nav-item,
+html[lang="ar"] .workspace-copy,
+html[lang="ar"] .profile-copy,
+html[lang="ar"] .item-copy,
+html[lang="ar"] .hero-copy,
+html[lang="ar"] .section-head,
+html[lang="ar"] .view-toolbar,
+html[lang="ar"] .field,
+html[lang="ar"] .auth-card,
+html[lang="ar"] .feature-card,
+html[lang="ar"] .price-card,
+html[lang="ar"] .public-preview { text-align: right; }
+
+html[lang="ar"] .collapse-button { transform: scaleX(-1); }
+html[lang="ar"] .link-button { direction: rtl; }
+html[lang="ar"] .table-row { direction: rtl; }
+html[lang="ar"] .record-main { direction: rtl; }
+html[lang="ar"] .drawer-meta { direction: rtl; }
+html[lang="ar"] .copilot-input { direction: rtl; }
+html[lang="ar"] .search-field,
+html[lang="ar"] input,
+html[lang="ar"] textarea { text-align: right; }
+
+html[lang="ar"] .social-preview,
+html[lang="ar"] .post-art,
+html[lang="ar"] .social-media,
+html[lang="ar"] .canvas,
+html[lang="ar"] .mini-chart,
+html[lang="ar"] .chart-bars,
+html[lang="ar"] .donut,
+html[lang="ar"] .browser-card { direction: ltr; }
+
+html[lang="ar"] .brand-mark,
+html[lang="ar"] .nav-icon,
+html[lang="ar"] .feature-icon,
+html[lang="ar"] .profile-avatar,
+html[lang="ar"] .avatar { font-family: Inter, Arial, sans-serif !important; }
+
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] strong,
+html[lang="ar"] b { letter-spacing: 0 !important; }
+
+html[lang="ar"] .eyebrow,
+html[lang="ar"] .section-kicker,
+html[lang="ar"] .nav-group-title { letter-spacing: 0 !important; }
+
+/* Arabic experience switcher — true RTL alignment without overflow. */
+html[lang="ar"] .experience-switcher {
+  direction: rtl;
+  width: 100%;
+}
+
+html[lang="ar"] .experience-current {
+  direction: rtl;
+  grid-template-columns: 38px minmax(0,1fr) 18px;
+  text-align: right;
+  gap: 9px;
+  padding: 10px;
+}
+
+html[lang="ar"] .experience-current .experience-icon {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+}
+
+html[lang="ar"] .experience-current .workspace-copy {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  min-width: 0;
+  align-items: flex-start;
+  text-align: right;
+}
+
+html[lang="ar"] .experience-current .workspace-copy strong,
+html[lang="ar"] .experience-current .workspace-copy small {
+  width: 100%;
+  text-align: right;
+}
+
+html[lang="ar"] .experience-current .workspace-copy strong {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+html[lang="ar"] .experience-current .workspace-copy small {
+  font-size: 9px;
+  line-height: 1.45;
+  margin-top: 1px;
+}
+
+html[lang="ar"] .experience-current .chevron {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: center;
+  direction: ltr;
+}
+
+html[lang="ar"] .experience-menu {
+  direction: rtl;
+  right: 0;
+  left: auto;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  padding: 7px;
+  overflow: hidden;
+}
+
+html[lang="ar"] .experience-menu button {
+  direction: rtl;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: 34px minmax(0,1fr);
+  grid-template-rows: auto auto;
+  column-gap: 9px;
+  row-gap: 1px;
+  align-items: center;
+  padding: 10px;
+  text-align: right;
+}
+
+html[lang="ar"] .experience-menu button > span {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: center;
+}
+
+html[lang="ar"] .experience-menu button > b,
+html[lang="ar"] .experience-menu button > small {
+  grid-column: 2;
+  width: 100%;
+  min-width: 0;
+  text-align: right;
+  justify-self: stretch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[lang="ar"] .experience-menu button > b {
+  grid-row: 1;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+html[lang="ar"] .experience-menu button > small {
+  grid-row: 2;
+  font-size: 9px;
+  line-height: 1.45;
+  margin-top: 1px;
+}
+
+/* Keep the switcher compact and centered when the desktop sidebar is collapsed. */
+html[lang="ar"] .sidebar-collapsed .experience-current {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+html[lang="ar"] .sidebar-collapsed .experience-menu {
+  right: 0;
+  left: auto;
+  width: 230px;
+  min-width: 230px;
+  max-width: 230px;
+}
+
+@media (max-width: 760px) {
+  html[lang="ar"] .mobile-menu { right: 14px; left: auto; }
+
+  html[lang="ar"] .experience-menu {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
