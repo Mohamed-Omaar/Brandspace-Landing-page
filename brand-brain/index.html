@@ -95,13 +95,48 @@
       glossary:{title:'Glossary',description:'Approved naming, spelling and translation rules that protect consistency across languages.',status:'4 pending',count:'28 approved terms'}
     };
     const $=s=>document.querySelector(s),stage=$('#orbStage'),canvas=$('#orbCanvas'),ctx=canvas.getContext('2d'),nodes=[...document.querySelectorAll('.orbit-node')],drawer=$('#drawer'),backdrop=$('#drawerBackdrop'),globalFile=$('#globalFile'),areaFile=$('#areaFile'),dropzone=$('#dropzone');
-    let activeArea='identity',pointer={x:-999,y:-999,inside:false},tilt={x:0,y:0,tx:0,ty:0},particles=[],last=0,orbit=0;
+    let activeArea='identity',pointer={x:-999,y:-999,inside:false},tilt={x:0,y:0,tx:0,ty:0},particles=[];
     function size(){const r=stage.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);canvas.style.width=r.width+'px';canvas.style.height=r.height+'px';ctx.setTransform(d,0,0,d,0,0);buildParticles()}
-    function buildParticles(){particles=[];const r=stage.getBoundingClientRect(),radius=Math.min(r.width,r.height)*.41,count=r.width<680?2300:4400;for(let i=0;i<count;i++){const y=1-(i/(count-1))*2,rad=Math.sqrt(1-y*y),phi=i*2.399963,halo=i%9===0,shell=halo?1.03+Math.random()*.15:.99+Math.random()*.025;particles.push({x:Math.cos(phi)*rad*radius*shell,y:y*radius*shell,z:Math.sin(phi)*rad*radius*shell,seed:Math.random()*6.28,halo})}}
-    function draw(t){const rect=stage.getBoundingClientRect(),cx=rect.width/2,cy=rect.height/2,radius=Math.min(rect.width,rect.height)*.41,holeRadius=radius*.2,breath=1+Math.sin(t*.001)*.006;ctx.clearRect(0,0,rect.width,rect.height);tilt.x+=(tilt.tx-tilt.x)*.035;tilt.y+=(tilt.ty-tilt.y)*.035;const ay=t*.00018+tilt.x,ax=Math.sin(t*.00023)*.08+tilt.y;for(const p of particles){let x=p.x*Math.cos(ay)-p.z*Math.sin(ay),z=p.x*Math.sin(ay)+p.z*Math.cos(ay),y=p.y*Math.cos(ax)-z*Math.sin(ax);z=p.y*Math.sin(ax)+z*Math.cos(ax);const depth=Math.max(0,Math.min(1,(z/radius+1)/2)),scale=.7+depth*.65,radial=breath;let px=cx+x*radial,py=cy+y*radial;if(Math.hypot(px-cx,py-cy)<holeRadius)continue;const dx=px-pointer.x,dy=py-pointer.y,dist=Math.hypot(dx,dy);if(pointer.inside&&dist<92){const push=(92-dist)/92*22;px+=dx/(dist||1)*push;py+=dy/(dist||1)*push}const pulse=Math.sin(p.seed*2.3+t*.00055),hue=pulse>.82?'#ffdd15':(pulse>.48?'#7935fe':(depth>.55?'#111114':'#35353d'));ctx.globalAlpha=(.48+depth*.5)*(p.halo?.46:1);ctx.fillStyle=hue;ctx.beginPath();ctx.arc(px,py,Math.max(.8,(p.halo?1.35:2.15)*scale),0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;positionNodes(t);requestAnimationFrame(draw)}
+    function generateSphere(count,radius,isInner){
+      const golden=(1+Math.sqrt(5))/2;
+      for(let i=0;i<count;i++){
+        const ratio=i/(count-1),inclination=Math.acos(1-2*ratio),azimuth=2*Math.PI*golden*i;
+        let color='#7935fe';if(i%3===0)color='#ffdd15';if(i%7===0)color='#111114';
+        particles.push({x:radius*Math.sin(inclination)*Math.cos(azimuth),y:radius*Math.sin(inclination)*Math.sin(azimuth),z:radius*Math.cos(inclination),color,isInner,seed:Math.random()*Math.PI*2,energy:0});
+      }
+    }
+    function buildParticles(){const r=stage.getBoundingClientRect(),unit=Math.min(r.width,r.height);particles=[];generateSphere(r.width<680?130:180,unit*.32,false);generateSphere(r.width<680?55:78,unit*.15,true)}
+    function drawGlow(x,y,radius,color,intensity){if(intensity<.06)return;const rgb=color==='#ffdd15'?'255,221,21':'121,53,254',gradient=ctx.createRadialGradient(x,y,0,x,y,radius*4);gradient.addColorStop(0,`rgba(${rgb},${intensity*.42})`);gradient.addColorStop(1,`rgba(${rgb},0)`);ctx.fillStyle=gradient;ctx.beginPath();ctx.arc(x,y,radius*4,0,Math.PI*2);ctx.fill()}
+    function draw(t){
+      const rect=stage.getBoundingClientRect(),cx=rect.width/2,cy=rect.height/2,unit=Math.min(rect.width,rect.height),outerRadius=unit*.32,holeRadius=outerRadius*.27;
+      ctx.clearRect(0,0,rect.width,rect.height);tilt.x+=(tilt.tx-tilt.x)*.025;tilt.y+=(tilt.ty-tilt.y)*.025;
+      const ay=t*.000055+tilt.x,ax=-.08+tilt.y,cosX=Math.cos(ax),sinX=Math.sin(ax),cosY=Math.cos(ay),sinY=Math.sin(ay),projected=[];
+      for(const p of particles){
+        if(Math.random()<.00035)p.energy=1;p.energy*=.965;
+        const rx=p.x*cosY-p.z*sinY,rz=p.x*sinY+p.z*cosY,ry=p.y*cosX-rz*sinX,finalZ=p.y*sinX+rz*cosX,scale=700/(700+finalZ);
+        let px=cx+rx*scale,py=cy+ry*scale;
+        const dx=px-pointer.x,dy=py-pointer.y,dist=Math.hypot(dx,dy);
+        if(pointer.inside&&dist<105){const force=Math.pow((105-dist)/105,2)*28;px+=dx/(dist||1)*force;py+=dy/(dist||1)*force}
+        projected.push({x:px,y:py,z:finalZ,scale,color:p.color,isInner:p.isInner,energy:p.energy,seed:p.seed});
+      }
+      projected.sort((a,b)=>b.z-a.z);ctx.lineCap='round';ctx.lineJoin='round';
+      for(let i=0;i<projected.length;i++){
+        const p1=projected[i],maxDistance=(p1.isInner?unit*.145:unit*.11)*p1.scale;
+        for(let j=i+1;j<Math.min(i+24,projected.length);j++){
+          const p2=projected[j];if(p1.isInner!==p2.isInner)continue;
+          const distance=Math.hypot(p1.x-p2.x,p1.y-p2.y);if(distance>=maxDistance)continue;
+          const energy=Math.max(p1.energy,p2.energy),alpha=Math.min(.52,(1-distance/maxDistance)*p1.scale*(p1.isInner?.38:.25)+energy*.2);
+          ctx.beginPath();ctx.moveTo(p1.x,p1.y);
+          if(p1.isInner)ctx.lineTo(p2.x,p2.y);else{const mx=(p1.x+p2.x)/2,my=(p1.y+p2.y)/2,bend=Math.sin(p1.seed)*4;ctx.quadraticCurveTo(mx+bend,my-bend,p2.x,p2.y)}
+          ctx.strokeStyle=p1.isInner?`rgba(255,221,21,${alpha})`:`rgba(121,53,254,${alpha})`;ctx.lineWidth=Math.max(.3,(p1.isInner?1.25:.8)*p1.scale);ctx.stroke();
+        }
+      }
+      for(const p of projected){const radius=Math.max(.65,(p.isInner?2.7:2)*p.scale),alpha=Math.min(1,Math.max(.24,p.scale*.86+p.energy*.35));if(p.energy>.1)drawGlow(p.x,p.y,radius,p.color,p.energy*p.scale);ctx.beginPath();ctx.arc(p.x,p.y,radius,0,Math.PI*2);ctx.fillStyle=p.energy>.58?`rgba(255,255,255,${alpha})`:p.color==='#7935fe'?`rgba(121,53,254,${alpha})`:p.color==='#ffdd15'?`rgba(255,221,21,${alpha})`:`rgba(17,17,20,${alpha})`;ctx.fill()}
+      ctx.save();ctx.globalCompositeOperation='destination-out';ctx.beginPath();ctx.arc(cx,cy,holeRadius,0,Math.PI*2);ctx.fill();ctx.restore();positionNodes(t);requestAnimationFrame(draw)
+    }
     const baseAngles=[3.55,5.42,.3,2.83,1.62,4.7];
-    function positionNodes(t){const rect=stage.getBoundingClientRect(),radius=Math.min(rect.width,rect.height)*.41,rx=radius*.72,ry=radius*.72,breath=1+Math.sin(t*.001)*.006;orbit=t*.000025;nodes.forEach((n,i)=>{const a=baseAngles[i]+orbit,radial=breath,x=rect.width/2+Math.cos(a)*rx*radial,y=rect.height/2+Math.sin(a)*ry*radial,z=(Math.sin(a)+1)/2,scale=.82+z*.22;n.style.left=x+'px';n.style.top=y+'px';n.style.opacity=String(.7+z*.3);n.style.transform=`translate(-50%,-50%) scale(${scale})`;n.style.zIndex=String(5+Math.round(z*3))})}
-    function localPointer(e){const r=stage.getBoundingClientRect();pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top;pointer.inside=true;tilt.tx=(pointer.x/r.width-.5)*.85;tilt.ty=(pointer.y/r.height-.5)*.5}
+    function positionNodes(t){const rect=stage.getBoundingClientRect(),radius=Math.min(rect.width,rect.height)*.41,rx=radius*.72,ry=radius*.72,orbit=t*.000012;nodes.forEach((n,i)=>{const a=baseAngles[i]+orbit,x=rect.width/2+Math.cos(a)*rx,y=rect.height/2+Math.sin(a)*ry,z=(Math.sin(a)+1)/2,scale=.82+z*.22;n.style.left=x+'px';n.style.top=y+'px';n.style.opacity=String(.7+z*.3);n.style.transform=`translate(-50%,-50%) scale(${scale})`;n.style.zIndex=String(5+Math.round(z*3))})}
+    function localPointer(e){const r=stage.getBoundingClientRect();pointer.x=e.clientX-r.left;pointer.y=e.clientY-r.top;pointer.inside=true;tilt.tx=(pointer.x/r.width-.5)*.24;tilt.ty=(pointer.y/r.height-.5)*.16}
     stage.addEventListener('pointermove',localPointer);stage.addEventListener('pointerleave',()=>{pointer.inside=false;tilt.tx=0;tilt.ty=0});
     function openArea(key){activeArea=key;const a=areas[key];$('#drawerTitle').textContent=a.title;$('#drawerDescription').textContent=a.description;$('#drawerStatus').textContent=a.status;$('#drawerCount').textContent=a.count;drawer.classList.add('open');backdrop.classList.add('open');drawer.setAttribute('aria-hidden','false')}
     function closeDrawer(){drawer.classList.remove('open');backdrop.classList.remove('open');drawer.setAttribute('aria-hidden','true')}
