@@ -23,7 +23,7 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     const style=document.createElement("style");
     style.id="brandBrainIntegratedStyle";
     style.textContent=`
-      .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:28px;background:#f3f3f5;box-shadow:0 18px 55px rgba(30,22,54,.06)}
+      .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:0;background:transparent;box-shadow:none}
       @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
     `;
     document.head.appendChild(style);
