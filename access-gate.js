@@ -1,6 +1,6 @@
 (() => {
-  const STORAGE_KEY = 'brandspace_preview_unlocked';
-  const PASSWORD_HASH = 'bedea0e85fab156c85c945769256abb50579a665ba6f30ca994b839da79642aa';
+  const STORAGE_KEY = 'brandspace_preview_unlocked_v2';
+  const PASSWORD_HASH = '403d8e94cf0849e740a5881235d0d449303d46c46a667cb25de4d50214415e6c';
 
   const loadBranding = () => {
     if (!document.querySelector('link[data-bs-preview-branding]')) {
