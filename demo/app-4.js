@@ -23,9 +23,8 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     const style=document.createElement("style");
     style.id="brandBrainIntegratedStyle";
     style.textContent=`
-      .app-shell.brand-brain-open{background:transparent;backdrop-filter:none;border-radius:0;box-shadow:none;overflow:visible}
       .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:0;background:transparent;box-shadow:none}
-      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:0}}
+      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
     `;
     document.head.appendChild(style);
   }
@@ -58,6 +57,7 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
           .side,.topbar{display:none!important}
           .main{display:block!important;width:100%!important;min-width:0!important;background:transparent!important}
           .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important;background:transparent!important}
+          .hero{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
           .copilot{position:absolute!important;right:22px!important;bottom:22px!important}
           @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:24px!important}.copilot{display:none!important}}
         `;
@@ -83,7 +83,6 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     state.view="brand-brain";
     location.hash="customer/brand-brain";
     activateBrainButton(btn);
-    appShell.classList.add("brand-brain-open");
 
     const eyebrow=document.getElementById("pageEyebrow");
     const title=document.getElementById("pageTitle");
@@ -151,12 +150,9 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
   document.addEventListener("click",e=>{
     const target=e.target.closest?.("[data-view-target],[data-mode]");
     if(!target)return;
-    if(state.view==="brand-brain"){
-      appShell.classList.remove("brand-brain-open");
-      if(target.dataset.viewTarget){
-        const create=document.getElementById("globalCreate");
-        if(create)create.innerHTML='+ <span>Create</span>';
-      }
+    if(state.view==="brand-brain"&&target.dataset.viewTarget){
+      const create=document.getElementById("globalCreate");
+      if(create)create.innerHTML='+ <span>Create</span>';
     }
     setTimeout(addBrandBrainNav,0);
   },true);
