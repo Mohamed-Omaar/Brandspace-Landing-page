@@ -54,10 +54,10 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
         style.id="brandBrainEmbeddedMode";
         style.textContent=`
           html,body{background:transparent!important;overflow:visible!important}
-          .app{display:block!important;grid-template-columns:1fr!important;padding:0!important;min-height:0!important}
+          .app{display:block!important;grid-template-columns:1fr!important;padding:0!important;min-height:0!important;background:transparent!important}
           .side,.topbar{display:none!important}
-          .main{display:block!important;width:100%!important;min-width:0!important}
-          .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important}
+          .main{display:block!important;width:100%!important;min-width:0!important;background:transparent!important}
+          .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important;background:transparent!important}
           .copilot{position:absolute!important;right:22px!important;bottom:22px!important}
           @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:24px!important}.copilot{display:none!important}}
         `;
