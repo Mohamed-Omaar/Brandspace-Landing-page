@@ -11,7 +11,7 @@ function bindPage(){$$('[data-view-target]').forEach(b=>b.addEventListener("clic
 function closeMobile(){sidebar.classList.remove("mobile-open");$("#mobileBackdrop").classList.remove("open");$("#mobileMenu").setAttribute("aria-expanded","false")}
 $("#collapseSidebar").addEventListener("click",e=>{state.collapsed=!state.collapsed;appShell.classList.toggle("sidebar-collapsed",state.collapsed);e.currentTarget.setAttribute("aria-expanded",String(!state.collapsed))});$("#experienceButton").addEventListener("click",e=>{const m=$("#experienceMenu");m.classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",String(m.classList.contains("open")))});$$('[data-mode]').forEach(b=>b.addEventListener("click",()=>setMode(b.dataset.mode)));$("#mobileMenu").addEventListener("click",()=>{sidebar.classList.add("mobile-open");$("#mobileBackdrop").classList.add("open");$("#mobileMenu").setAttribute("aria-expanded","true")});$("#mobileBackdrop").addEventListener("click",closeMobile);$("#drawerBackdrop").addEventListener("click",closeDrawer);$("#copilotDock").addEventListener("click",openCopilot);$("#globalCreate").addEventListener("click",()=>state.mode==="customer"?showView("composer"):notify());$("#languageButton").addEventListener("click",()=>{state.lang=state.lang==="en"?"ar":"en";document.documentElement.dir=state.lang==="ar"?"rtl":"ltr";document.documentElement.lang=state.lang;$("#languageButton").textContent=state.lang==="ar"?"EN":"AR";notify()});
 function commandItems(){return Object.entries(experiences).flatMap(([mode,e])=>e.groups.flatMap(g=>g[1].map(x=>({mode,id:x[0],label:x[2]}))))}function openSearch(){$("#commandBackdrop").classList.add("open");$("#commandInput").value="";renderResults("");setTimeout(()=>$("#commandInput").focus(),20)}function closeSearch(){$("#commandBackdrop").classList.remove("open")}function renderResults(q){const items=commandItems().filter(x=>x.label.toLowerCase().includes(q.toLowerCase())).slice(0,8);$("#commandResults").innerHTML=items.map(x=>`<button class="command-result" data-command="${x.mode}/${x.id}"><b>${x.label}</b><small>${experiences[x.mode].name}</small></button>`).join("");$$('[data-command]').forEach(b=>b.addEventListener("click",()=>{const[m,id]=b.dataset.command.split("/");state.mode=m;$("#experienceName").textContent=experiences[m].name;$("#experienceIcon").textContent=experiences[m].icon;$("#profileRole").textContent=experiences[m].role;showView(id);closeSearch()}))}
-$("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEventListener("input",e=>renderResults(e.target.value));$("#commandBackdrop").addEventListener("click",e=>{if(e.target===$("#commandBackdrop"))closeSearch()});document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openSearch()}if(e.key==="Escape"){closeDrawer();closeSearch();closeMobile()}});const initial=location.hash.replace("#","").split("/");if(experiences[initial[0]]){state.mode=initial[0];state.view=meta[initial[1]]?initial[1]:experiences[state.mode].start;$("#experienceName").textContent=experiences[state.mode].name;$("#experienceIcon").textContent=experiences[state.mode].icon;$("#profileRole").textContent=experiences[state.mode].role}render();
+$("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEventListener("input",e=>renderResults(e.target.value));$("#commandBackdrop").addEventListener("click",e=>{if(e.target===$("#commandBackdrop"))closeSearch()});document.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();openSearch()}if(e.key==="Escape"){closeDrawer();closeSearch();closeMobile()}});const initial=location.hash.replace("#","").split("/");const initialBrandBrain=initial[0]==="customer"&&initial[1]==="brand-brain";if(experiences[initial[0]]){state.mode=initial[0];state.view=initialBrandBrain?"brand-brain":(meta[initial[1]]?initial[1]:experiences[state.mode].start);$("#experienceName").textContent=experiences[state.mode].name;$("#experienceIcon").textContent=experiences[state.mode].icon;$("#profileRole").textContent=experiences[state.mode].role}if(initialBrandBrain){bindPage()}else{render()}
 
 /* Integrated Brand Brain preview — stays inside the original product shell. */
 (()=>{
@@ -23,15 +23,16 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     const style=document.createElement("style");
     style.id="brandBrainIntegratedStyle";
     style.textContent=`
-      .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:0;background:transparent;box-shadow:none}
-      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
+      .brand-brain-route{display:block;width:100%;height:760px;min-height:0;border:0;border-radius:0;background:transparent;box-shadow:none;opacity:0;transition:opacity .14s ease}
+      .brand-brain-route.is-ready{opacity:1}
+      @media(max-width:760px){.brand-brain-route{height:700px;min-height:0;border-radius:0}}
     `;
     document.head.appendChild(style);
   }
 
   function resizeBrainFrame(frame,bdoc){
     const resize=()=>{
-      const h=Math.max(900,bdoc.documentElement.scrollHeight,bdoc.body?.scrollHeight||0);
+      const h=Math.max(760,bdoc.documentElement.scrollHeight,bdoc.body?.scrollHeight||0);
       frame.style.height=`${h}px`;
     };
     resize();
@@ -56,18 +57,21 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
           .app{display:block!important;grid-template-columns:1fr!important;padding:0!important;min-height:0!important;background:transparent!important}
           .side,.topbar{display:none!important}
           .main{display:block!important;width:100%!important;min-width:0!important;background:transparent!important}
-          .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important;background:transparent!important}
-          .hero{background:rgba(255,255,255,.9)!important;box-shadow:0 18px 55px rgba(30,22,54,.06)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;border-radius:24px!important;padding:24px!important}
+          .content{max-width:none!important;margin:0!important;padding:4px 10px 28px!important;background:transparent!important}
+          .hero{background:rgba(255,255,255,.9)!important;box-shadow:0 7px 20px rgba(20,16,35,.045)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;border-radius:24px!important;padding:24px!important}
+          .card,.intel,.source{box-shadow:0 6px 18px rgba(20,16,35,.038)!important}
+          .mini{box-shadow:0 4px 12px rgba(20,16,35,.03)!important}
+          .brain-chat{box-shadow:none!important}
           .orb-stage{border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-          .copilot{position:absolute!important;right:22px!important;bottom:22px!important}
-          @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:20px!important;padding:16px!important}.orb-stage{border-radius:0!important}.copilot{display:none!important}}
+          .copilot{display:none!important}
+          @media(max-width:650px){.content{padding:0 6px 22px!important}.page-head{margin-top:14px!important}.hero{border-radius:20px!important;padding:16px!important;box-shadow:0 5px 15px rgba(20,16,35,.04)!important}.orb-stage{border-radius:0!important}}
         `;
         bdoc.head.appendChild(style);
       }
       resizeBrainFrame(frame,bdoc);
+      requestAnimationFrame(()=>frame.classList.add("is-ready"));
     };
     frame.addEventListener("load",apply,{once:true});
-    setTimeout(apply,80);
   }
 
   function activateBrainButton(btn){
@@ -82,7 +86,7 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
   function openBrandBrain(btn){
     ensureBrainStyles();
     state.view="brand-brain";
-    location.hash="customer/brand-brain";
+    history.replaceState(null,"","#customer/brand-brain");
     activateBrainButton(btn);
 
     const eyebrow=document.getElementById("pageEyebrow");
@@ -159,11 +163,8 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
   },true);
 
   addBrandBrainNav();
-  if(location.hash==="#customer/brand-brain"){
-    setTimeout(()=>{
-      addBrandBrainNav();
-      const btn=document.getElementById("brandBrainIntegratedNav");
-      if(btn)openBrandBrain(btn);
-    },60);
+  if(initialBrandBrain){
+    const btn=document.getElementById("brandBrainIntegratedNav");
+    if(btn)openBrandBrain(btn);
   }
 })();
