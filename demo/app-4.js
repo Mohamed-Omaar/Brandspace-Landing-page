@@ -24,7 +24,7 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     style.id="brandBrainIntegratedStyle";
     style.textContent=`
       .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:0;background:transparent;box-shadow:none}
-      .app-shell:has(#brandBrainRouteFrame){box-shadow:none!important}
+      .app-shell:has(#brandBrainRouteFrame){box-shadow:none!important;filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(255,255,255,.78)!important}
       @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
     `;
     document.head.appendChild(style);
