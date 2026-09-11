@@ -58,8 +58,9 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
           .main{display:block!important;width:100%!important;min-width:0!important;background:transparent!important}
           .content{max-width:none!important;margin:0!important;padding:4px 2px 100px!important;background:transparent!important}
           .hero{background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+          .orb-stage{border-radius:24px!important;background:rgba(255,255,255,.9)!important;box-shadow:0 18px 55px rgba(30,22,54,.06)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important}
           .copilot{position:absolute!important;right:22px!important;bottom:22px!important}
-          @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:24px!important}.copilot{display:none!important}}
+          @media(max-width:650px){.content{padding:0 0 78px!important}.page-head{margin-top:14px!important}.hero{border-radius:24px!important}.orb-stage{border-radius:20px!important}.copilot{display:none!important}}
         `;
         bdoc.head.appendChild(style);
       }
