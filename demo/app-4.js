@@ -23,8 +23,9 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     const style=document.createElement("style");
     style.id="brandBrainIntegratedStyle";
     style.textContent=`
+      .app-shell.brand-brain-open{background:transparent;backdrop-filter:none;border-radius:0;box-shadow:none;overflow:visible}
       .brand-brain-route{display:block;width:100%;min-height:980px;border:0;border-radius:0;background:transparent;box-shadow:none}
-      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:20px}}
+      @media(max-width:760px){.brand-brain-route{min-height:900px;border-radius:0}}
     `;
     document.head.appendChild(style);
   }
@@ -82,6 +83,7 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
     state.view="brand-brain";
     location.hash="customer/brand-brain";
     activateBrainButton(btn);
+    appShell.classList.add("brand-brain-open");
 
     const eyebrow=document.getElementById("pageEyebrow");
     const title=document.getElementById("pageTitle");
@@ -149,9 +151,12 @@ $("#openSearch").addEventListener("click",openSearch);$("#commandInput").addEven
   document.addEventListener("click",e=>{
     const target=e.target.closest?.("[data-view-target],[data-mode]");
     if(!target)return;
-    if(state.view==="brand-brain"&&target.dataset.viewTarget){
-      const create=document.getElementById("globalCreate");
-      if(create)create.innerHTML='+ <span>Create</span>';
+    if(state.view==="brand-brain"){
+      appShell.classList.remove("brand-brain-open");
+      if(target.dataset.viewTarget){
+        const create=document.getElementById("globalCreate");
+        if(create)create.innerHTML='+ <span>Create</span>';
+      }
     }
     setTimeout(addBrandBrainNav,0);
   },true);
