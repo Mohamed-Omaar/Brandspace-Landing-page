@@ -2,6 +2,64 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const timers = [];
 
+  // Presentation shell refinement: keep only the product-shaped surface.
+  // No notch, status bar, battery, edge stroke or gesture bar. The frame now
+  // uses the same soft radius/shadow language as the BrandSpace demo surfaces.
+  const style = document.createElement('style');
+  style.textContent = `
+    :root{--phone:330px}
+    .stage{width:min(1180px,calc(100% - 48px));padding:34px 0 42px}
+    .phones{grid-template-columns:repeat(3,var(--phone));gap:38px;justify-content:center}
+    .device{
+      height:600px!important;
+      border:0!important;
+      border-radius:29px!important;
+      background:#fff!important;
+      box-shadow:0 22px 70px rgba(34,25,63,.10),0 4px 18px rgba(34,25,63,.045)!important;
+      overflow:hidden;
+    }
+    .device:before,.device-top,.gesture{display:none!important}
+    .app-topbar{
+      height:58px!important;
+      padding:12px 14px 10px!important;
+      border-bottom:1px solid rgba(17,17,20,.06)!important;
+      background:#fff!important;
+    }
+    .brand-mark{
+      width:31px!important;
+      height:31px!important;
+      border-radius:9px!important;
+      background:transparent url('/brandspace-logo.svg') center/contain no-repeat!important;
+      color:transparent!important;
+      font-size:0!important;
+      box-shadow:none!important;
+    }
+    .app-view{padding:10px!important;background:#fafafa!important}
+    .bottom-nav{height:46px!important;padding:3px 4px 5px!important;background:#fff!important}
+    .frame-label{padding-top:13px!important}
+    .demo-hero{min-height:118px!important;padding:11px!important}
+    .demo-hero h2{font-size:14px!important}
+    .surface-card{padding:9px!important;border-radius:15px!important}
+    .brain-stage{height:244px!important;margin:4px -2px 2px!important}
+    .brain-stage:before{width:205px!important;height:205px!important}
+    .ring-one{width:144px!important;height:144px!important}
+    .ring-two{width:205px!important;height:205px!important}
+    .brain-center{width:76px!important;height:76px!important;border-radius:25px!important}
+    .chart-card{min-height:158px!important}
+    .chart-bars{height:112px!important;padding-top:8px!important}
+    .audience-card{padding-bottom:8px!important}
+    @media(max-width:1080px){
+      :root{--phone:310px}
+      .phones{gap:24px}
+      .device{height:575px!important}
+    }
+    @media(max-width:860px){
+      .phones{justify-content:flex-start}
+      .device{height:600px!important}
+    }
+  `;
+  document.head.appendChild(style);
+
   const formatValue = (value, el) => {
     const suffix = el.dataset.suffix || '';
     const decimals = Number(el.dataset.decimals || 0);
