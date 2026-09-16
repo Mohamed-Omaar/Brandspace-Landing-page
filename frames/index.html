@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./refine.css" />
 </head>
 <body>
   <main class="stage" aria-label="BrandSpace product frames">
@@ -23,44 +24,55 @@
     <section class="phones" aria-label="Animated mobile product UI">
       <article class="phone" data-phone="overview">
         <div class="device">
-          <div class="device-top"><span>9:41</span><i></i></div>
-          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Workspace</small><b>Good morning, Mohamed</b></div><button class="top-icon" aria-label="Notifications">♢<em></em></button></header>
+          <header class="app-topbar"><img class="ui-logo" src="/brandspace-logo.svg" alt="BrandSpace" /><div class="page-title"><small>Workspace</small><b>Good morning, Mohamed</b></div><button class="top-icon" aria-label="Notifications">♢<em></em></button></header>
           <div class="app-view overview-view">
             <section class="demo-hero"><div><span class="label-pill">Your week at a glance</span><h2>Everything your brand needs, in one calm place.</h2><p>Plan, create, collaborate and publish across every channel—with your AI marketing team beside you.</p></div><div class="hero-float"><b>Performance this month</b><small>Engagement is up 18.4%</small><div class="mini-chart" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div></section>
             <div class="metric-row"><article class="metric"><span>Scheduled</span><strong data-value="12">0</strong><small>4 this week</small></article><article class="metric"><span>In review</span><strong data-value="3" data-pad="2">00</strong><small>Needs attention</small></article><article class="metric"><span>Published</span><strong data-value="28">0</strong><small>Across 4 channels</small></article><article class="metric"><span>AI credits</span><strong data-value="76" data-suffix="%">0%</strong><small>Resets in 12 days</small></article></div>
             <section class="surface-card upcoming-card"><div class="section-head"><div><span class="section-kicker">Upcoming</span><h3>Next on your calendar</h3></div><button>View all →</button></div><button class="list-item active" data-overview-row="0"><span class="thumb"></span><span class="item-copy"><b>New collection launch</b><small>Instagram · Today, 09:00</small></span><span class="status">Ready</span></button><button class="list-item" data-overview-row="1"><span class="thumb alt"></span><span class="item-copy"><b>Founder story</b><small>LinkedIn · Tomorrow, 13:30</small></span><span class="status review">Review</span></button><button class="list-item" data-overview-row="2"><span class="thumb warm"></span><span class="item-copy"><b>Three useful tips</b><small>Facebook · Friday, 18:00</small></span><span class="status">Ready</span></button></section>
             <section class="surface-card quick-card-wrap"><div class="section-head"><div><span class="section-kicker">Copilot</span><h3>Continue creating</h3></div><span class="spark">✦</span></div><div class="quick-grid"><button class="quick-card active" data-quick="0"><span>⚡</span><b>Generate ideas</b><small>From your brand goals</small></button><button class="quick-card" data-quick="1"><span>✎</span><b>Write a post</b><small>With live preview</small></button><button class="quick-card" data-quick="2"><span>✦</span><b>Create a design</b><small>From a template</small></button><button class="quick-card" data-quick="3"><span>✧</span><b>Ask Copilot</b><small>Plan your next move</small></button></div></section>
           </div>
-          <nav class="bottom-nav" aria-label="Overview navigation"><button class="active">⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button>↗<small>Analytics</small></button></nav><span class="gesture"></span>
+          <nav class="bottom-nav" aria-label="Overview navigation"><button class="active">⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button>↗<small>Analytics</small></button></nav>
         </div>
-        <div class="frame-label"><b>Workspace overview</b><small>Live counters · active cards · next actions</small></div>
+        <div class="frame-label"><b>Workspace Overview</b><small>Live counters · active cards · next actions</small></div>
       </article>
 
       <article class="phone" data-phone="brain">
         <div class="device">
-          <div class="device-top"><span>9:41</span><i></i></div>
-          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Brand Brain</small><b>Your brand, remembered.</b></div><button class="top-icon">•••</button></header>
-          <div class="app-view brain-view">
-            <div class="brain-copy"><h2>Your brand,<br><strong>remembered.</strong></h2><p>The living knowledge layer behind every strategy, caption and recommendation.</p></div>
-            <section class="brain-stage" aria-label="Animated Brand Brain knowledge map"><div class="brain-ring ring-one"></div><div class="brain-ring ring-two"></div><button class="brain-center"><span>Brand<br />Brain</span><small>82%</small></button><button class="brain-node active" data-area="Identity" data-detail="12 facts · complete" style="--x:12%;--y:20%"><b>Identity</b><small>12 facts</small></button><button class="brain-node" data-area="Audience" data-detail="4 segments · complete" style="--x:64%;--y:14%"><b>Audience</b><small>4 segments</small></button><button class="brain-node" data-area="Offers" data-detail="6 active offers" style="--x:72%;--y:63%"><b>Offers</b><small>6 active</small></button><button class="brain-node" data-area="Voice" data-detail="AR + EN · active" style="--x:8%;--y:66%"><b>Voice</b><small>AR + EN</small></button><button class="brain-node" data-area="Learnings" data-detail="8 approved" style="--x:34%;--y:80%"><b>Learnings</b><small>8 approved</small></button><button class="brain-node" data-area="Strategy" data-detail="Q4 memory" style="--x:37%;--y:5%"><b>Strategy</b><small>Q4 memory</small></button><div class="brain-cursor" aria-hidden="true"></div></section>
-            <section class="brain-panel"><div class="completion"><span><small>Brand Brain completion</small><b data-value="82" data-suffix="%">0%</b></span><em>Strong foundation</em><div class="progress"><i></i></div></div><div class="brain-health"><article><small>Knowledge items</small><b data-value="128">0</b><span>+14 this month</span></article><article><small>Source documents</small><b data-value="4">0</b><span>All processed</span></article></div><div class="area-preview"><span class="area-icon">◇</span><div><small>Exploring now</small><b id="brainAreaTitle">Identity</b><em id="brainAreaDetail">12 facts · complete</em></div><button>→</button></div></section>
+          <header class="app-topbar"><img class="ui-logo" src="/brandspace-logo.svg" alt="BrandSpace" /><div class="page-title"><small>Brand Brain</small><b>Your brand, remembered.</b></div><button class="top-icon">•••</button></header>
+          <div class="app-view brain-view native-brain-view">
+            <div class="brain-copy"><h2>Your brand,<br><strong>remembered.</strong></h2><p>Brand Brain is the living knowledge layer behind every strategy, caption and recommendation.</p></div>
+            <section class="brain-stage native-brain-stage" aria-label="Animated Brand Brain knowledge map">
+              <div class="brain-particles" aria-hidden="true"></div>
+              <button class="brain-center native-brain-center"><span>Brand<br />Brain</span></button>
+              <button class="brain-node native-node active" data-area="Identity" data-detail="12 facts · complete" data-tone="ink" style="--x:18%;--y:26%"><b>Identity</b><small>12 facts · complete</small></button>
+              <button class="brain-node native-node" data-area="Audience" data-detail="4 segments · complete" data-tone="purple" style="--x:70%;--y:22%"><b>Audience</b><small>4 segments · complete</small></button>
+              <button class="brain-node native-node" data-area="Offers" data-detail="6 active offers" data-tone="yellow" style="--x:76%;--y:61%"><b>Offers</b><small>6 active offers</small></button>
+              <button class="brain-node native-node" data-area="Voice" data-detail="AR + EN · active" data-tone="ink" style="--x:14%;--y:66%"><b>Voice</b><small>AR + EN · active</small></button>
+              <button class="brain-node native-node" data-area="Learnings" data-detail="8 approved" data-tone="purple" style="--x:60%;--y:80%"><b>Learnings</b><small>8 approved</small></button>
+              <button class="brain-node native-node" data-area="Strategy" data-detail="Q4 memory" data-tone="yellow" style="--x:43%;--y:10%"><b>Strategy</b><small>Q4 memory</small></button>
+              <div class="brain-cursor" aria-hidden="true"></div>
+            </section>
+            <section class="brain-panel native-brain-panel">
+              <div class="completion native-completion"><small>Brand Brain completion</small><div class="completion-big"><b data-value="82" data-suffix="%">0%</b><span>Strong foundation</span></div><div class="progress"><i></i></div></div>
+              <div class="brain-health"><article><small>Knowledge items</small><b data-value="128">0</b><span>+14 this month</span></article><article><small>Source documents</small><b data-value="4">0</b><span>All processed</span></article></div>
+              <div class="area-preview"><span class="area-icon">◇</span><div><small>Exploring now</small><b id="brainAreaTitle">Identity</b><em id="brainAreaDetail">12 facts · complete</em></div><button>→</button></div>
+            </section>
           </div>
-          <nav class="bottom-nav" aria-label="Brand Brain navigation"><button>⌂<small>Home</small></button><button class="active">◇<small>Brain</small></button><button>✦<small>Copilot</small></button><button>⚙<small>Settings</small></button></nav><span class="gesture"></span>
+          <nav class="bottom-nav" aria-label="Brand Brain navigation"><button>⌂<small>Home</small></button><button class="active">◇<small>Brain</small></button><button>✦<small>Copilot</small></button><button>⚙<small>Settings</small></button></nav>
         </div>
-        <div class="frame-label"><b>Brand Brain</b><small>Reactive map · live knowledge · rotating focus</small></div>
+        <div class="frame-label"><b>Brand Brain</b><small>Living knowledge · reactive map · approved memory</small></div>
       </article>
 
       <article class="phone" data-phone="analytics">
         <div class="device">
-          <div class="device-top"><span>9:41</span><i></i></div>
-          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Performance</small><b>Analytics</b></div><button class="top-icon">⌄</button></header>
+          <header class="app-topbar"><img class="ui-logo" src="/brandspace-logo.svg" alt="BrandSpace" /><div class="page-title"><small>Performance</small><b>Analytics</b></div><button class="top-icon">⌄</button></header>
           <div class="app-view analytics-view">
             <div class="analytics-toolbar"><span><small>Performance</small><b>Analytics</b></span><button id="periodButton">Last 30 days ⌄</button></div>
             <div class="metric-row analytics-metrics"><article class="metric"><span>Reach</span><strong data-value="124800" data-format="compact">0</strong><small class="positive">↑ 18.4%</small></article><article class="metric"><span>Engagement</span><strong data-value="8.2" data-decimals="1" data-suffix="%">0%</strong><small class="positive">↑ 1.7%</small></article><article class="metric"><span>Followers</span><strong data-value="12482" data-format="comma">0</strong><small class="positive">↑ 486</small></article><article class="metric"><span>Published</span><strong data-value="28">0</strong><small>4 channels</small></article></div>
             <section class="surface-card chart-card"><div class="section-head"><div><span class="section-kicker">Trend</span><h3>Content performance</h3></div><em id="trendBadge">+18.4%</em></div><div class="chart-bars" aria-label="Content performance over 8 weeks"><div class="bar-column"><i style="--h:45%"></i><span>W1</span></div><div class="bar-column"><i style="--h:66%"></i><span>W2</span></div><div class="bar-column"><i style="--h:54%"></i><span>W3</span></div><div class="bar-column"><i style="--h:80%"></i><span>W4</span></div><div class="bar-column"><i style="--h:62%"></i><span>W5</span></div><div class="bar-column"><i style="--h:92%"></i><span>W6</span></div><div class="bar-column"><i style="--h:74%"></i><span>W7</span></div><div class="bar-column highlight"><i style="--h:99%"></i><span>W8</span></div></div></section>
             <section class="surface-card audience-card"><div class="section-head"><div><span class="section-kicker">Audience</span><h3>Channel mix</h3></div></div><div class="audience-layout"><div class="donut"><span>68%</span></div><div class="rank-list"><button class="active" data-rank="0"><span>01</span><b>Instagram</b><em>42%</em></button><button data-rank="1"><span>02</span><b>LinkedIn</b><em>28%</em></button><button data-rank="2"><span>03</span><b>Facebook</b><em>18%</em></button></div></div></section>
           </div>
-          <nav class="bottom-nav" aria-label="Analytics navigation"><button>⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button class="active">↗<small>Analytics</small></button></nav><span class="gesture"></span>
+          <nav class="bottom-nav" aria-label="Analytics navigation"><button>⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button class="active">↗<small>Analytics</small></button></nav>
         </div>
         <div class="frame-label"><b>Analytics</b><small>Looping chart · counters · channel focus</small></div>
       </article>
