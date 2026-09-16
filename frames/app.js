@@ -1,4 +1,9 @@
 (() => {
+  const deckStyle = document.createElement('link');
+  deckStyle.rel = 'stylesheet';
+  deckStyle.href = './deck.css';
+  document.head.appendChild(deckStyle);
+
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const timers = [];
   let particleRaf = 0;
@@ -54,6 +59,18 @@
     timers.push(id);
   }
 
+  function cycle(containerSelector, itemSelector, ms = 2600, className = 'active') {
+    document.querySelectorAll(containerSelector).forEach(container => {
+      const items = [...container.querySelectorAll(itemSelector)];
+      if (items.length < 2) return;
+      let index = Math.max(0, items.findIndex(item => item.classList.contains(className)));
+      every(() => {
+        index = (index + 1) % items.length;
+        items.forEach((item, i) => item.classList.toggle(className, i === index));
+      }, ms);
+    });
+  }
+
   const overview = document.querySelector('[data-phone="overview"]');
   if (overview) {
     const rows = [...overview.querySelectorAll('[data-overview-row]')];
@@ -95,14 +112,8 @@
         const ratio = i / Math.max(1, count - 1);
         const inclination = Math.acos(1 - 2 * ratio);
         const azimuth = 2 * Math.PI * 1.61803398875 * i;
-        particles.push({
-          el: dot,
-          x: Math.sin(inclination) * Math.cos(azimuth),
-          y: Math.sin(inclination) * Math.sin(azimuth),
-          z: Math.cos(inclination),
-        });
+        particles.push({el: dot,x: Math.sin(inclination) * Math.cos(azimuth),y: Math.sin(inclination) * Math.sin(azimuth),z: Math.cos(inclination)});
       }
-
       const renderParticles = now => {
         const t = reduceMotion ? 0 : now * 0.00022;
         const ct = Math.cos(t), st = Math.sin(t);
@@ -164,13 +175,66 @@
       period?.classList.add('flash');
       if (badge) {
         badge.textContent = '+18.4%';
-        badge.animate(
-          [{ transform: 'translateY(3px)', opacity: .45 }, { transform: 'translateY(0)', opacity: 1 }],
-          { duration: 450, easing: 'ease-out' },
-        );
+        badge.animate([{transform:'translateY(3px)',opacity:.45},{transform:'translateY(0)',opacity:1}],{duration:450,easing:'ease-out'});
       }
       setTimeout(() => period?.classList.remove('flash'), 700);
     }, 5600);
+  }
+
+  /* Continuous “someone is using it” motion for the remaining demo-derived screens. */
+  cycle('[data-calendar-grid]', '[data-cycle-item]', 2400);
+  cycle('[data-post-grid]', '[data-cycle-item]', 2600);
+  cycle('[data-cycle-tabs]', 'button', 3200);
+  cycle('[data-channel-row]', 'button', 2200);
+  cycle('[data-studio-tools]', 'button', 2300);
+  cycle('.asset-row-mini', 'button', 3000);
+  cycle('[data-feature-list]', '[data-cycle-item]', 2500);
+  cycle('[data-media-grid]', '[data-cycle-item]', 2600);
+  cycle('[data-suggestions]', 'button', 2300);
+  cycle('[data-idea-stack]', '[data-cycle-item]', 2500);
+  cycle('[data-account-list]', '[data-cycle-item]', 2600);
+  cycle('[data-approval-list]', '[data-cycle-item]', 2400);
+  cycle('[data-team-list]', '[data-cycle-item]', 2500);
+
+  document.querySelectorAll('[data-phone="campaigns"],[data-phone="reports"],[data-phone="team"]').forEach(scope => {
+    replayCounters(scope);
+    every(() => replayCounters(scope), 7200);
+  });
+
+  const caption = document.getElementById('captionTyping');
+  if (caption && !reduceMotion) {
+    const phrases = [
+      'A new collection, built for the pace of real life.',
+      'Thoughtful details, simple choices, and more room to breathe.',
+    ];
+    let phraseIndex = 0;
+    const typePhrase = text => {
+      let i = 0;
+      caption.textContent = '';
+      const id = setInterval(() => {
+        if (document.hidden) return;
+        caption.textContent = text.slice(0, i += 1);
+        if (i >= text.length) clearInterval(id);
+      }, 34);
+      timers.push(id);
+    };
+    typePhrase(phrases[0]);
+    every(() => {
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typePhrase(phrases[phraseIndex]);
+    }, 5600);
+  }
+
+  const slides = [...document.querySelectorAll('.slide-card')];
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.animate([{transform:'translateY(10px)',opacity:.92},{transform:'translateY(0)',opacity:1}],{duration:650,easing:'cubic-bezier(.2,.75,.25,1)',fill:'both'});
+        }
+      });
+    }, {threshold:.16});
+    slides.forEach(slide => observer.observe(slide));
   }
 
   document.addEventListener('visibilitychange', () => {
@@ -180,5 +244,5 @@
   window.addEventListener('pagehide', () => {
     timers.forEach(clearInterval);
     if (particleRaf) cancelAnimationFrame(particleRaf);
-  }, { once: true });
+  }, {once:true});
 })();
