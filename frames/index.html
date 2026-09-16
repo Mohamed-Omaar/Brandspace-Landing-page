@@ -4,471 +4,68 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <meta name="theme-color" content="#f4f4f6" />
+  <meta name="theme-color" content="#ffffff" />
   <title>BrandSpace — Product Frames</title>
-  <meta name="description" content="Animated BrandSpace product frames for presentations and product storytelling." />
+  <meta name="description" content="Three live BrandSpace product frames based on the existing interactive demo." />
   <link rel="icon" type="image/svg+xml" href="/brandspace-logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <div class="ambient" aria-hidden="true">
-    <span class="orb orb-purple"></span>
-    <span class="orb orb-yellow"></span>
-    <span class="orb orb-mix"></span>
-  </div>
-
-  <header class="frames-bar">
-    <a class="frames-brand" href="/" aria-label="BrandSpace home">
-      <img src="/brandspace-logo.svg" alt="" />
-      <span><b>BrandSpace</b><small>Product Frames</small></span>
-    </a>
-    <div class="frames-progress" aria-label="Frame progress">
-      <button class="progress-dot active" data-go="brain" aria-label="Brand Brain"></button>
-      <button class="progress-dot" data-go="content" aria-label="Content Studio"></button>
-      <button class="progress-dot" data-go="calendar" aria-label="Calendar"></button>
-      <button class="progress-dot" data-go="analytics" aria-label="Analytics"></button>
-      <button class="progress-dot" data-go="copilot" aria-label="Copilot"></button>
-      <button class="progress-dot" data-go="automations" aria-label="Automations"></button>
+  <main class="stage" aria-label="BrandSpace product frames">
+    <div class="stage-meta">
+      <a class="brand" href="/" aria-label="BrandSpace home"><img src="/brandspace-logo.svg" alt="" /><span><b>BrandSpace</b><small>Product frames</small></span></a>
+      <span class="live-note"><i></i> Live UI motion</span>
     </div>
-    <span class="frames-caption">Scroll to animate</span>
-  </header>
 
-  <main>
-    <section class="intro" aria-labelledby="intro-title">
-      <div class="intro-copy">
-        <span class="eyebrow">One connected marketing OS</span>
-        <h1 id="intro-title">See the product <em>move.</em></h1>
-        <p>Live interface frames built from the BrandSpace product language — not screenshots. Scroll through the system from brand intelligence to execution.</p>
-      </div>
-      <div class="intro-stack" aria-hidden="true">
-        <div class="intro-phone p1"><span></span><i></i><i></i><i></i></div>
-        <div class="intro-phone p2"><span></span><i></i><i></i><i></i></div>
-        <div class="intro-phone p3"><span></span><i></i><i></i><i></i></div>
-      </div>
-      <div class="scroll-cue"><span></span>01 / 06</div>
-    </section>
-
-    <!-- FRAME 01 — BRAND BRAIN -->
-    <section class="frame frame-brain" id="brain" data-frame="brain">
-      <div class="frame-copy">
-        <span class="frame-number">01</span>
-        <div>
-          <span class="eyebrow">Brand Brain</span>
-          <h2>Your brand becomes <em>usable intelligence.</em></h2>
-          <p>Identity, audience, tone, offers and learnings stay connected — then flow into everything the team creates.</p>
+    <section class="phones" aria-label="Animated mobile product UI">
+      <article class="phone" data-phone="overview">
+        <div class="device">
+          <div class="device-top"><span>9:41</span><i></i></div>
+          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Workspace</small><b>Good morning, Mohamed</b></div><button class="top-icon" aria-label="Notifications">♢<em></em></button></header>
+          <div class="app-view overview-view">
+            <section class="demo-hero"><div><span class="label-pill">Your week at a glance</span><h2>Everything your brand needs, in one calm place.</h2><p>Plan, create, collaborate and publish across every channel—with your AI marketing team beside you.</p></div><div class="hero-float"><b>Performance this month</b><small>Engagement is up 18.4%</small><div class="mini-chart" aria-hidden="true"><i></i><i></i><i></i><i></i></div></div></section>
+            <div class="metric-row"><article class="metric"><span>Scheduled</span><strong data-value="12">0</strong><small>4 this week</small></article><article class="metric"><span>In review</span><strong data-value="3" data-pad="2">00</strong><small>Needs attention</small></article><article class="metric"><span>Published</span><strong data-value="28">0</strong><small>Across 4 channels</small></article><article class="metric"><span>AI credits</span><strong data-value="76" data-suffix="%">0%</strong><small>Resets in 12 days</small></article></div>
+            <section class="surface-card upcoming-card"><div class="section-head"><div><span class="section-kicker">Upcoming</span><h3>Next on your calendar</h3></div><button>View all →</button></div><button class="list-item active" data-overview-row="0"><span class="thumb"></span><span class="item-copy"><b>New collection launch</b><small>Instagram · Today, 09:00</small></span><span class="status">Ready</span></button><button class="list-item" data-overview-row="1"><span class="thumb alt"></span><span class="item-copy"><b>Founder story</b><small>LinkedIn · Tomorrow, 13:30</small></span><span class="status review">Review</span></button><button class="list-item" data-overview-row="2"><span class="thumb warm"></span><span class="item-copy"><b>Three useful tips</b><small>Facebook · Friday, 18:00</small></span><span class="status">Ready</span></button></section>
+            <section class="surface-card quick-card-wrap"><div class="section-head"><div><span class="section-kicker">Copilot</span><h3>Continue creating</h3></div><span class="spark">✦</span></div><div class="quick-grid"><button class="quick-card active" data-quick="0"><span>⚡</span><b>Generate ideas</b><small>From your brand goals</small></button><button class="quick-card" data-quick="1"><span>✎</span><b>Write a post</b><small>With live preview</small></button><button class="quick-card" data-quick="2"><span>✦</span><b>Create a design</b><small>From a template</small></button><button class="quick-card" data-quick="3"><span>✧</span><b>Ask Copilot</b><small>Plan your next move</small></button></div></section>
+          </div>
+          <nav class="bottom-nav" aria-label="Overview navigation"><button class="active">⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button>↗<small>Analytics</small></button></nav><span class="gesture"></span>
         </div>
-      </div>
+        <div class="frame-label"><b>Workspace overview</b><small>Live counters · active cards · next actions</small></div>
+      </article>
 
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Brand Brain</b><button>•••</button></div>
-            <div class="screen brain-screen">
-              <span class="screen-kicker">Knowledge map</span>
-              <div class="brain-orbit" aria-hidden="true">
-                <span class="brain-core"><b>Brand</b><small>92% ready</small></span>
-                <span class="brain-node n1">Voice</span>
-                <span class="brain-node n2">Audience</span>
-                <span class="brain-node n3">Offers</span>
-                <span class="brain-node n4">Proof</span>
-                <span class="brain-node n5">Learnings</span>
-                <span class="brain-ring r1"></span><span class="brain-ring r2"></span>
-              </div>
-              <div class="knowledge-strip">
-                <span><b data-count="10">0</b><small>Areas</small></span>
-                <span><b data-count="48">0</b><small>Facts</small></span>
-                <span><b data-count="7">0</b><small>Sources</small></span>
-              </div>
-            </div>
-            <nav class="mobile-nav"><i class="active">⌂</i><i>◇</i><i>✦</i><i>⚙</i></nav>
+      <article class="phone" data-phone="brain">
+        <div class="device">
+          <div class="device-top"><span>9:41</span><i></i></div>
+          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Brand Brain</small><b>Your brand, remembered.</b></div><button class="top-icon">•••</button></header>
+          <div class="app-view brain-view">
+            <div class="brain-copy"><h2>Your brand,<br><strong>remembered.</strong></h2><p>The living knowledge layer behind every strategy, caption and recommendation.</p></div>
+            <section class="brain-stage" aria-label="Animated Brand Brain knowledge map"><div class="brain-ring ring-one"></div><div class="brain-ring ring-two"></div><button class="brain-center"><span>Brand<br />Brain</span><small>82%</small></button><button class="brain-node active" data-area="Identity" data-detail="12 facts · complete" style="--x:12%;--y:20%"><b>Identity</b><small>12 facts</small></button><button class="brain-node" data-area="Audience" data-detail="4 segments · complete" style="--x:64%;--y:14%"><b>Audience</b><small>4 segments</small></button><button class="brain-node" data-area="Offers" data-detail="6 active offers" style="--x:72%;--y:63%"><b>Offers</b><small>6 active</small></button><button class="brain-node" data-area="Voice" data-detail="AR + EN · active" style="--x:8%;--y:66%"><b>Voice</b><small>AR + EN</small></button><button class="brain-node" data-area="Learnings" data-detail="8 approved" style="--x:34%;--y:80%"><b>Learnings</b><small>8 approved</small></button><button class="brain-node" data-area="Strategy" data-detail="Q4 memory" style="--x:37%;--y:5%"><b>Strategy</b><small>Q4 memory</small></button><div class="brain-cursor" aria-hidden="true"></div></section>
+            <section class="brain-panel"><div class="completion"><span><small>Brand Brain completion</small><b data-value="82" data-suffix="%">0%</b></span><em>Strong foundation</em><div class="progress"><i></i></div></div><div class="brain-health"><article><small>Knowledge items</small><b data-value="128">0</b><span>+14 this month</span></article><article><small>Source documents</small><b data-value="4">0</b><span>All processed</span></article></div><div class="area-preview"><span class="area-icon">◇</span><div><small>Exploring now</small><b id="brainAreaTitle">Identity</b><em id="brainAreaDetail">12 facts · complete</em></div><button>→</button></div></section>
           </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Knowledge</b><button>＋</button></div>
-            <div class="screen knowledge-screen">
-              <div class="screen-heading"><span><small>Brand intelligence</small><b>What the brand knows</b></span><em>92%</em></div>
-              <div class="knowledge-cards stagger">
-                <div class="knowledge-card purple"><span>✦</span><div><b>Tone of voice</b><small>Confident · Clear · Human</small></div><em>Active</em></div>
-                <div class="knowledge-card"><span>◎</span><div><b>Audience</b><small>Founders & growth teams</small></div><em>12 facts</em></div>
-                <div class="knowledge-card"><span>◇</span><div><b>Offers</b><small>Subscription-led platform</small></div><em>8 facts</em></div>
-                <div class="knowledge-card"><span>↗</span><div><b>Learnings</b><small>Performance-backed memory</small></div><em>New 3</em></div>
-              </div>
-              <button class="mobile-primary">Review new knowledge <span>→</span></button>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i class="active">◇</i><i>✦</i><i>⚙</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Ask Brain</b><button>✦</button></div>
-            <div class="screen chat-screen">
-              <div class="chat-context"><span>Using</span><b>Brand Brain · 6 sources</b></div>
-              <div class="chat-thread stagger">
-                <div class="bubble user">What should our next launch sound like?</div>
-                <div class="bubble ai"><span class="spark">✦</span><p>Lead with clarity and confidence. Keep the message specific, useful and founder-focused.</p><small>Grounded in Voice · Audience · Offers</small></div>
-                <div class="citation-row"><i>01</i><i>02</i><i>03</i><span>3 citations</span></div>
-              </div>
-              <div class="composer-mini"><span>Ask your Brand Brain…</span><b>↑</b></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>◇</i><i class="active">✦</i><i>⚙</i></nav>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FRAME 02 — CONTENT STUDIO -->
-    <section class="frame frame-content" id="content" data-frame="content">
-      <div class="frame-copy">
-        <span class="frame-number">02</span>
-        <div>
-          <span class="eyebrow">AI Content Studio</span>
-          <h2>From brief to <em>channel-ready content.</em></h2>
-          <p>Create once, shape by platform, keep every output aligned to the brand — with the reasoning layer behind it.</p>
+          <nav class="bottom-nav" aria-label="Brand Brain navigation"><button>⌂<small>Home</small></button><button class="active">◇<small>Brain</small></button><button>✦<small>Copilot</small></button><button>⚙<small>Settings</small></button></nav><span class="gesture"></span>
         </div>
-      </div>
+        <div class="frame-label"><b>Brand Brain</b><small>Reactive map · live knowledge · rotating focus</small></div>
+      </article>
 
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Create</b><button>×</button></div>
-            <div class="screen create-screen">
-              <span class="screen-kicker">New post</span>
-              <h3>What are we creating?</h3>
-              <label class="field-card"><small>Brief</small><span class="type-line">Launch our new AI marketing workspace for founders.</span><i class="typing-caret"></i></label>
-              <div class="chip-label">Channels</div>
-              <div class="chips stagger"><button class="selected">Instagram</button><button>LinkedIn</button><button>X</button><button>TikTok</button></div>
-              <div class="credit-note"><span>✦</span><div><b>Grounded generation</b><small>Brand Brain is connected</small></div><em>24 cr</em></div>
-              <button class="mobile-primary generate-btn"><span>✦</span> Generate content</button>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>□</i><i class="active">✎</i><i>◎</i></nav>
+      <article class="phone" data-phone="analytics">
+        <div class="device">
+          <div class="device-top"><span>9:41</span><i></i></div>
+          <header class="app-topbar"><span class="brand-mark">B</span><div class="page-title"><small>Performance</small><b>Analytics</b></div><button class="top-icon">⌄</button></header>
+          <div class="app-view analytics-view">
+            <div class="analytics-toolbar"><span><small>Performance</small><b>Analytics</b></span><button id="periodButton">Last 30 days ⌄</button></div>
+            <div class="metric-row analytics-metrics"><article class="metric"><span>Reach</span><strong data-value="124800" data-format="compact">0</strong><small class="positive">↑ 18.4%</small></article><article class="metric"><span>Engagement</span><strong data-value="8.2" data-decimals="1" data-suffix="%">0%</strong><small class="positive">↑ 1.7%</small></article><article class="metric"><span>Followers</span><strong data-value="12482" data-format="comma">0</strong><small class="positive">↑ 486</small></article><article class="metric"><span>Published</span><strong data-value="28">0</strong><small>4 channels</small></article></div>
+            <section class="surface-card chart-card"><div class="section-head"><div><span class="section-kicker">Trend</span><h3>Content performance</h3></div><em id="trendBadge">+18.4%</em></div><div class="chart-bars" aria-label="Content performance over 8 weeks"><div class="bar-column"><i style="--h:45%"></i><span>W1</span></div><div class="bar-column"><i style="--h:66%"></i><span>W2</span></div><div class="bar-column"><i style="--h:54%"></i><span>W3</span></div><div class="bar-column"><i style="--h:80%"></i><span>W4</span></div><div class="bar-column"><i style="--h:62%"></i><span>W5</span></div><div class="bar-column"><i style="--h:92%"></i><span>W6</span></div><div class="bar-column"><i style="--h:74%"></i><span>W7</span></div><div class="bar-column highlight"><i style="--h:99%"></i><span>W8</span></div></div></section>
+            <section class="surface-card audience-card"><div class="section-head"><div><span class="section-kicker">Audience</span><h3>Channel mix</h3></div></div><div class="audience-layout"><div class="donut"><span>68%</span></div><div class="rank-list"><button class="active" data-rank="0"><span>01</span><b>Instagram</b><em>42%</em></button><button data-rank="1"><span>02</span><b>LinkedIn</b><em>28%</em></button><button data-rank="2"><span>03</span><b>Facebook</b><em>18%</em></button></div></div></section>
           </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Variants</b><button>•••</button></div>
-            <div class="screen variants-screen">
-              <div class="variant-tabs"><button class="active">IG</button><button>LI</button><button>X</button><span></span></div>
-              <div class="post-preview-card reveal-card">
-                <div class="post-account"><span class="avatar-grad">B</span><div><b>BrandSpace</b><small>@brandspace</small></div><i>•••</i></div>
-                <div class="preview-art"><span class="art-orb a"></span><span class="art-orb b"></span><strong>Your AI<br/>Marketing Team.</strong><small>One system. One brand brain.</small></div>
-                <p>Build the strategy. Create the content. Publish with confidence — all from one connected workspace.</p>
-                <div class="post-actions"><span>♡</span><span>◯</span><span>⌁</span><i>⌑</i></div>
-              </div>
-              <div class="rewrite-row stagger"><button>Shorter</button><button>More direct</button><button>Arabic</button></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>□</i><i class="active">✎</i><i>◎</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Content</b><button>⌕</button></div>
-            <div class="screen library-screen">
-              <div class="screen-heading"><span><small>Library</small><b>Recent content</b></span><em>24</em></div>
-              <div class="library-stack stagger">
-                <div class="content-row"><span class="thumb-card t1">✦</span><div><b>Platform launch</b><small>Instagram · Ready</small></div><em class="status-ready">Ready</em></div>
-                <div class="content-row"><span class="thumb-card t2">B</span><div><b>Founder story</b><small>LinkedIn · Review</small></div><em class="status-review">Review</em></div>
-                <div class="content-row"><span class="thumb-card t3">↗</span><div><b>Weekly insight</b><small>X · Draft</small></div><em>Draft</em></div>
-                <div class="content-row"><span class="thumb-card t4">◎</span><div><b>Product walkthrough</b><small>TikTok · Ready</small></div><em class="status-ready">Ready</em></div>
-              </div>
-              <div class="library-foot"><span><b data-count="12">0</b><small>Scheduled</small></span><span><b data-count="3">0</b><small>In review</small></span></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>▧</i><i class="active">✎</i><i>◎</i></nav>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FRAME 03 — CALENDAR -->
-    <section class="frame frame-calendar" id="calendar" data-frame="calendar">
-      <div class="frame-copy">
-        <span class="frame-number">03</span>
-        <div>
-          <span class="eyebrow">Calendar & Approvals</span>
-          <h2>Plan the month. <em>Control the moment.</em></h2>
-          <p>See what is going out, when it is going out and what still needs a human decision.</p>
+          <nav class="bottom-nav" aria-label="Analytics navigation"><button>⌂<small>Home</small></button><button>□<small>Calendar</small></button><button>✎<small>Create</small></button><button class="active">↗<small>Analytics</small></button></nav><span class="gesture"></span>
         </div>
-      </div>
-
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Calendar</b><button>＋</button></div>
-            <div class="screen calendar-screen">
-              <div class="month-head"><button>‹</button><div><small>September</small><b>2026</b></div><button>›</button></div>
-              <div class="week-labels"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
-              <div class="month-grid stagger">
-                <span>14</span><span>15</span><span>16<i class="event-dot purple"></i></span><span>17</span><span>18<i class="event-dot yellow"></i></span><span>19</span><span>20</span>
-                <span>21</span><span class="today">22<i class="event-dot purple"></i></span><span>23<i class="event-dot yellow"></i></span><span>24<i class="event-dot purple"></i></span><span>25</span><span>26</span><span>27</span>
-                <span>28</span><span>29</span><span>30</span><span class="muted-day">1</span><span class="muted-day">2</span><span class="muted-day">3</span><span class="muted-day">4</span>
-              </div>
-              <div class="day-agenda"><small>Tuesday · 22 Sep</small><div class="agenda-card"><i></i><span><b>Platform launch</b><small>09:00 · Instagram</small></span><em>Ready</em></div><div class="agenda-card"><i class="yellow"></i><span><b>Founder note</b><small>18:30 · LinkedIn</small></span><em>Review</em></div></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i class="active">□</i><i>✎</i><i>◎</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Schedule post</b><button>×</button></div>
-            <div class="screen schedule-screen">
-              <div class="schedule-preview"><span class="mini-art"><b>B</b></span><div><small>Content</small><b>Platform launch</b><em>Instagram + LinkedIn</em></div></div>
-              <div class="schedule-form">
-                <label><small>Date</small><b>22 Sep 2026</b><span>▣</span></label>
-                <label><small>Time</small><b>09:00 AM</b><span>◷</span></label>
-                <label><small>Timezone</small><b>Riyadh · GMT+3</b><span>⌄</span></label>
-              </div>
-              <div class="approval-gate"><span>✓</span><div><b>Approval passed</b><small>Ready to schedule</small></div></div>
-              <button class="mobile-primary pulse-button">Schedule post <span>→</span></button>
-              <small class="safe-copy">Publishing stays behind your approval policy.</small>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i class="active">□</i><i>✎</i><i>◎</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Approvals</b><button>⌕</button></div>
-            <div class="screen approvals-screen">
-              <div class="approval-title"><span><small>Needs attention</small><b>3 posts</b></span><em data-count="3">0</em></div>
-              <div class="approval-stack stagger">
-                <div class="approval-card"><div class="approval-thumb ap1"></div><div><b>Founder story</b><small>LinkedIn · Tomorrow 13:30</small><span>Requested by Sara</span></div><i>→</i></div>
-                <div class="approval-card"><div class="approval-thumb ap2"></div><div><b>Feature carousel</b><small>Instagram · Thu 18:00</small><span>Requested by Omar</span></div><i>→</i></div>
-                <div class="approval-card"><div class="approval-thumb ap3"></div><div><b>Weekly recap</b><small>X · Friday 10:00</small><span>Requested by AI Copilot</span></div><i>→</i></div>
-              </div>
-              <div class="approval-actions"><button>Reject</button><button class="approve">Approve selected</button></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>✓</i><i class="active">□</i><i>◎</i></nav>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FRAME 04 — ANALYTICS -->
-    <section class="frame frame-analytics" id="analytics" data-frame="analytics">
-      <div class="frame-copy">
-        <span class="frame-number">04</span>
-        <div>
-          <span class="eyebrow">Smart Analytics</span>
-          <h2>Performance becomes <em>the next decision.</em></h2>
-          <p>See the numbers, understand the change and turn evidence into better strategy — without leaving the workspace.</p>
-        </div>
-      </div>
-
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Analytics</b><button>⌄</button></div>
-            <div class="screen metrics-screen">
-              <div class="period-pill">Last 28 days <span>⌄</span></div>
-              <div class="metric-cards stagger">
-                <div class="metric-card"><small>Reach</small><b data-count="128400" data-format="compact">0</b><em>↗ 18.4%</em></div>
-                <div class="metric-card"><small>Engagements</small><b data-count="18420" data-format="compact">0</b><em>↗ 12.1%</em></div>
-                <div class="metric-card"><small>Followers</small><b data-count="24380" data-format="compact">0</b><em>↗ 842</em></div>
-                <div class="metric-card"><small>Published</small><b data-count="28">0</b><em>4 channels</em></div>
-              </div>
-              <div class="goal-card"><span><b>74%</b><small>Monthly content goal</small></span><i><em></em></i></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>▥</i><i class="active">↗</i><i>◎</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Performance</b><button>•••</button></div>
-            <div class="screen chart-screen">
-              <div class="chart-head"><span><small>Engagement</small><b data-count="18.4" data-decimals="1" data-suffix="%">0</b></span><em>vs previous period</em></div>
-              <div class="line-chart">
-                <div class="chart-grid"><i></i><i></i><i></i><i></i></div>
-                <svg viewBox="0 0 300 150" preserveAspectRatio="none" aria-label="Engagement trend">
-                  <defs><linearGradient id="fillPurple" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7935fe" stop-opacity=".24"/><stop offset="100%" stop-color="#7935fe" stop-opacity="0"/></linearGradient></defs>
-                  <path class="chart-area" d="M0 126 C36 118 55 92 86 99 C116 105 130 64 164 72 C194 78 210 45 238 55 C266 64 278 28 300 21 L300 150 L0 150 Z"/>
-                  <path class="chart-line" pathLength="1" d="M0 126 C36 118 55 92 86 99 C116 105 130 64 164 72 C194 78 210 45 238 55 C266 64 278 28 300 21"/>
-                </svg>
-                <div class="chart-axis"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
-              </div>
-              <div class="channel-bars stagger"><span><i>Instagram</i><b><em style="--w:88%"></em></b><small>48%</small></span><span><i>LinkedIn</i><b><em style="--w:66%"></em></b><small>31%</small></span><span><i>X</i><b><em style="--w:42%"></em></b><small>21%</small></span></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>▥</i><i class="active">↗</i><i>◎</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>AI Insight</b><button>✦</button></div>
-            <div class="screen insight-screen">
-              <div class="insight-badge"><span>✦</span> Grounded insight</div>
-              <h3>Your educational posts are driving the strongest growth.</h3>
-              <p>Posts built around clear “how-to” value generated <b>1.8×</b> more saves than product-only posts this period.</p>
-              <div class="evidence-list stagger"><span><i>01</i><b>4,242 saves</b><small>Educational content</small></span><span><i>02</i><b>2,361 saves</b><small>Product content</small></span><span><i>03</i><b>+27%</b><small>Repeat engagement</small></span></div>
-              <div class="next-action"><span><small>Recommended next move</small><b>Turn this into next month’s content pillar.</b></span><button>→</button></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>▥</i><i class="active">✦</i><i>◎</i></nav>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FRAME 05 — COPILOT -->
-    <section class="frame frame-copilot" id="copilot" data-frame="copilot">
-      <div class="frame-copy">
-        <span class="frame-number">05</span>
-        <div>
-          <span class="eyebrow">AI Copilot</span>
-          <h2>Ask for an outcome. <em>Approve the action.</em></h2>
-          <p>Copilot can understand the workspace, propose a plan and act through the same permissions and controls as the team.</p>
-        </div>
-      </div>
-
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Copilot</b><button>＋</button></div>
-            <div class="screen copilot-chat-screen">
-              <div class="copilot-intro"><span>✦</span><b>What should we move forward today?</b><small>I can use your brand, content, calendar and analytics context.</small></div>
-              <div class="chat-thread copilot-thread stagger">
-                <div class="bubble user">Build a launch plan for next week and prepare the first post.</div>
-                <div class="bubble ai"><span class="spark">✦</span><p>I can do that. I’ll use your accepted strategy, create the campaign and draft the first launch post.</p></div>
-              </div>
-              <div class="composer-mini active-composer"><span>Ask Copilot…</span><b>↑</b></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>◇</i><i class="active">✦</i><i>⚙</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Proposed plan</b><button>×</button></div>
-            <div class="screen plan-screen">
-              <div class="plan-summary"><span>✦</span><div><small>Copilot plan</small><b>Launch next week</b></div><em>3 steps</em></div>
-              <div class="plan-steps stagger">
-                <div class="plan-step"><i>1</i><span><b>Create campaign</b><small>Internal · reversible</small></span><em>Ready</em></div>
-                <div class="plan-step"><i>2</i><span><b>Draft launch post</b><small>Uses Brand Brain · 18 credits</small></span><em>Ready</em></div>
-                <div class="plan-step external"><i>3</i><span><b>Place on calendar</b><small>Tuesday · 09:00 AM</small></span><em>Review</em></div>
-              </div>
-              <div class="plan-cost"><span><small>Estimated AI cost</small><b>18 credits</b></span><em>Nothing runs yet</em></div>
-              <button class="mobile-primary pulse-button">Review & confirm <span>→</span></button>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>◇</i><i class="active">✦</i><i>⚙</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Confirmation</b><button>×</button></div>
-            <div class="screen confirm-screen">
-              <div class="confirm-icon"><span>✓</span></div>
-              <small class="confirm-kicker">Human confirmation</small>
-              <h3>Ready to execute this plan?</h3>
-              <p>BrandSpace will create one campaign, generate one draft and schedule it for Tuesday at 09:00.</p>
-              <div class="confirm-details"><span><small>Brand</small><b>BrandSpace</b></span><span><small>External actions</small><b>None</b></span><span><small>Undo</small><b>Available</b></span></div>
-              <button class="mobile-primary confirm-button">Confirm & run</button>
-              <button class="mobile-secondary">Go back</button>
-              <small class="safe-copy">Permissions are checked again at execution.</small>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>◇</i><i class="active">✦</i><i>⚙</i></nav>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FRAME 06 — AUTOMATIONS -->
-    <section class="frame frame-automations" id="automations" data-frame="automations">
-      <div class="frame-copy">
-        <span class="frame-number">06</span>
-        <div>
-          <span class="eyebrow">Automations</span>
-          <h2>Turn repeatable work into <em>controlled systems.</em></h2>
-          <p>Rules react to real workspace events, re-check authority when they run and pause before anything external leaves the platform.</p>
-        </div>
-      </div>
-
-      <div class="phone-stage">
-        <article class="phone phone-left" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>New automation</b><button>×</button></div>
-            <div class="screen rule-screen">
-              <span class="screen-kicker">When this happens</span>
-              <div class="rule-block"><span class="rule-icon">✓</span><div><small>Trigger</small><b>Content approved</b></div><i>⌄</i></div>
-              <span class="connector-line"></span>
-              <span class="screen-kicker">Then do this</span>
-              <div class="rule-block purple"><span class="rule-icon">□</span><div><small>Action</small><b>Place on calendar</b></div><i>⌄</i></div>
-              <div class="rule-options"><label><small>Delay</small><b>24 hours</b><span>⌄</span></label><label><small>At</small><b>09:00</b><span>⌄</span></label></div>
-              <button class="mobile-primary">Create automation</button>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>⚡</i><i class="active">◎</i><i>⚙</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-center featured" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Automation</b><button>•••</button></div>
-            <div class="screen flow-screen">
-              <div class="flow-title"><span><small>Live rule</small><b>Approved → Calendar</b></span><em>On</em></div>
-              <div class="automation-flow">
-                <div class="flow-node trigger"><i>✓</i><span><small>Trigger</small><b>Content approved</b></span></div>
-                <div class="flow-track"><i class="flow-pulse"></i></div>
-                <div class="flow-node condition"><i>◇</i><span><small>Condition</small><b>Brand = BrandSpace</b></span></div>
-                <div class="flow-track"><i class="flow-pulse delay"></i></div>
-                <div class="flow-node action"><i>□</i><span><small>Action</small><b>Schedule +24h</b></span></div>
-              </div>
-              <div class="flow-stats"><span><b data-count="18">0</b><small>Runs</small></span><span><b data-count="18">0</b><small>Successful</small></span><span><b data-count="0">0</b><small>Blocked</small></span></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>⚡</i><i class="active">◎</i><i>⚙</i></nav>
-          </div>
-        </article>
-
-        <article class="phone phone-right" data-animate="rise">
-          <div class="phone-shell">
-            <div class="phone-status"><span>9:41</span><i></i></div>
-            <div class="mobile-topbar"><span class="mini-mark">B</span><b>Run history</b><button>⌕</button></div>
-            <div class="screen runs-screen">
-              <div class="runs-summary"><span><small>Today</small><b>6 runs</b></span><em>100% healthy</em></div>
-              <div class="run-list stagger">
-                <div class="run-row"><i class="ok">✓</i><span><b>Platform launch</b><small>Scheduled · 09:41</small></span><em>Success</em></div>
-                <div class="run-row"><i class="ok">✓</i><span><b>Founder story</b><small>Approval notified · 09:18</small></span><em>Success</em></div>
-                <div class="run-row"><i class="wait">◷</i><span><b>Feature carousel</b><small>Awaiting confirmation</small></span><em class="review">Review</em></div>
-                <div class="run-row"><i class="ok">✓</i><span><b>Weekly recap</b><small>Scheduled · 08:30</small></span><em>Success</em></div>
-              </div>
-              <div class="safety-card"><span>⚿</span><div><b>Authority checked live</b><small>Every automation re-checks permissions before it acts.</small></div></div>
-            </div>
-            <nav class="mobile-nav"><i>⌂</i><i>⚡</i><i class="active">◎</i><i>⚙</i></nav>
-          </div>
-        </article>
-      </div>
-
-      <footer class="frame-footer">
-        <span>BrandSpace</span>
-        <b>From brand memory → content → publishing → insight → action.</b>
-        <a href="/demo/">Open interactive demo →</a>
-      </footer>
+        <div class="frame-label"><b>Analytics</b><small>Looping chart · counters · channel focus</small></div>
+      </article>
     </section>
   </main>
-
   <script src="./app.js"></script>
 </body>
 </html>
