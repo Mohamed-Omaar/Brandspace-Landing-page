@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrandSpace Customer Platform Prototype</title>
+  <meta name="description" content="Interactive product prototype for the final BrandSpace customer dashboard." />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="prototype-note">PRODUCT PROTOTYPE · customer experience only · buttons simulate the intended final behavior · no live backend</div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#command-center" aria-label="BrandSpace prototype home">
+        <img src="../brandspace-logo.svg" alt="BrandSpace" />
+      </a>
+      <div class="workspace-card">
+        <small>Workspace</small>
+        <strong>Acme Group</strong>
+        <span>Growth plan · 3 brands</span>
+      </div>
+      <nav id="nav" aria-label="Customer modules"></nav>
+      <div class="sidebar-footer">
+        <button class="ghost full" data-action="show-cycle">↻ View customer cycle</button>
+        <button class="ghost full" data-page="settings">⚙ Settings</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-only" data-action="toggle-sidebar" aria-label="Open menu">☰</button>
+          <div>
+            <div class="eyebrow" id="page-eyebrow">CUSTOMER DASHBOARD</div>
+            <h1 id="page-title">Command Center</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <label class="brand-switcher">Brand
+            <select id="brand-switcher">
+              <option>Acme Coffee</option>
+              <option>Acme Home</option>
+              <option>Acme Labs</option>
+            </select>
+          </label>
+          <button class="credits" data-page="billing"><span>AI Credits</span><strong>8,420</strong></button>
+          <button class="primary" data-action="new-post">＋ Create post</button>
+          <button class="avatar" data-action="account-menu" aria-label="Account">MM</button>
+        </div>
+      </header>
+
+      <section class="journey-strip" aria-label="Core product cycle">
+        <button data-page="brand-brain">Brand Brain</button><span>→</span>
+        <button data-page="strategy">Strategy</button><span>→</span>
+        <button data-page="campaigns">Campaign</button><span>→</span>
+        <button data-page="content">Content</button><span>→</span>
+        <button data-page="creative">Creative</button><span>→</span>
+        <button data-page="approvals">Approval</button><span>→</span>
+        <button data-page="calendar">Calendar</button><span>→</span>
+        <button data-page="social">Publish</button><span>→</span>
+        <button data-page="analytics">Analytics</button><span>→</span>
+        <button data-page="intelligence">Learn</button>
+      </section>
+
+      <section class="content" id="content" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <div><div class="eyebrow">PROTOTYPE ACTION</div><h2 id="modal-title">Action</h2></div>
+        <button class="icon-btn" data-action="close-modal" aria-label="Close">×</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js"></script>
+</body>
+</html>
